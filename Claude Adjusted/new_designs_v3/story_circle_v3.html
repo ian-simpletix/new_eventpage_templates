@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Circle V3 - Literary Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink-navy: #1e3a5f;
+            --aged-paper: #f4f1ea;
+            --amber: #d4a373;
+            --charcoal: #3c3c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--aged-paper);
+            color: var(--charcoal);
+            padding-bottom: 100px;
+        }
+
+        .serif-literary {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--charcoal); line-height: 1.8; }
+        .wysiwyg-content p { margin-bottom: 20px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Crimson Pro', serif; font-size: 30px; color: var(--ink-navy); margin-top: 48px; margin-bottom: 16px; font-weight: 600; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content li { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .wysiwyg-content li::before { content: "—"; position: absolute; left: 0; color: var(--amber); }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--ink-navy); border-top: 1px solid var(--amber);">
+        <a href="#tickets" class="block w-full text-center text-lg px-8 py-3 rounded" style="background-color: var(--amber); color: var(--ink-navy); font-weight: 600;">
+            RSVP
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row overflow-hidden" style="background-color: #fdfcf9; border: 1px solid #d4cfc4; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r" style="border-color: #e5dfd4;">
+                <span class="inline-block px-4 py-2 text-sm rounded mb-6" style="background-color: #e8dcc8; color: var(--ink-navy); font-weight: 600;">
+                    Author Reading & Discussion
+                </span>
+                <h1 class="serif-literary text-5xl md:text-6xl mb-6 leading-tight" style="color: var(--ink-navy);">
+                    An Evening with Carmen Torres
+                </h1>
+                <p class="serif-literary text-xl mb-8" style="color: #666; line-height: 1.5;">
+                    Author of <em>The Memory Keeper's Daughter</em>
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5" style="background-color: white; border-left: 3px solid var(--amber);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--ink-navy); font-weight: 600; letter-spacing: 1px;">Date</h3>
+                        <p class="text-lg font-medium" style="color: var(--charcoal);">Thursday, March 27, 2026</p>
+                        <p class="text-base" style="color: #666;">7:00 PM - 8:30 PM</p>
+                    </div>
+                    <div class="p-5" style="background-color: white; border-left: 3px solid var(--amber);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--ink-navy); font-weight: 600; letter-spacing: 1px;">Location</h3>
+                        <p class="text-lg font-medium" style="color: var(--charcoal);">BookBar</p>
+                        <p class="text-base" style="color: #666;">Downtown</p>
+                    </div>
+                    <div class="p-5" style="background-color: white; border-left: 3px solid var(--amber);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--ink-navy); font-weight: 600; letter-spacing: 1px;">Admission</h3>
+                        <p class="text-lg font-medium" style="color: var(--charcoal);">$15 general / $10 students</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-lg px-8 py-4 rounded mt-10 transition-all" style="background-color: var(--ink-navy); color: white; font-weight: 600;">
+                    RSVP
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 1px solid #e5dfd4;">
+                    <h3 class="text-sm uppercase mb-4" style="color: var(--ink-navy); font-weight: 600; letter-spacing: 1px;">Hosted By</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded flex items-center justify-center serif-literary text-2xl" style="background-color: var(--ink-navy); color: white;">
+                            BB
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold" style="color: var(--ink-navy);">BookBar</h4>
+                            <p class="text-sm" style="color: #666;">Independent Bookshop</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-12">
+                    <section>
+                        <img src="../../images/people_in_a_museum.png" alt="Author Event" class="w-full h-auto object-cover" style="border: 1px solid #d4cfc4;">
+                    </section>
+
+                    <section>
+                        <h2 class="serif-literary text-4xl mb-6" style="color: var(--ink-navy);">About the Event</h2>
+                        <div class="wysiwyg-content">
+                            <p>Join us for an intimate evening with bestselling author Carmen Torres as she reads from her acclaimed new novel, <em>The Memory Keeper's Daughter</em>, and discusses her writing process, inspiration, and the themes of memory, family, and belonging that run through her work.</p>
+                            <p>The reading will be followed by a Q&A session and book signing. Copies of the book will be available for purchase.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5dfd4;">
+                        <div class="wysiwyg-content">
+                            <h3>About the Book</h3>
+                            <p><em>The Memory Keeper's Daughter</em> tells the story of three generations of women navigating identity, loss, and resilience in 1970s Mexico City. Torres weaves together magical realism and historical fiction in a narrative that Kirkus Reviews calls "luminous and unforgettable."</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5dfd4;">
+                        <div class="wysiwyg-content">
+                            <h3>What's Included</h3>
+                            <ul>
+                                <li>Author reading (approximately 20 minutes)</li>
+                                <li>Q&A and discussion</li>
+                                <li>Book signing</li>
+                                <li>Wine and light refreshments</li>
+                                <li>20% discount on book purchases</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-semibold" style="color: var(--ink-navy);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Party V3 - Botanical Elegance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #87a878;
+            --cream: #fdfdf8;
+            --terracotta: #c97a63;
+            --charcoal: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9faf7;
+            color: var(--charcoal);
+            padding-bottom: 100px;
+        }
+
+        .serif-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--charcoal); line-height: 1.8; }
+        .wysiwyg-content p { margin-bottom: 20px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--sage); margin-top: 48px; margin-bottom: 16px; font-weight: 700; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content li { margin-bottom: 12px; padding-left: 24px; position: relative; }
+        .wysiwyg-content li::before { content: "✿"; position: absolute; left: 0; color: var(--terracotta); font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--sage); border-top: 1px solid var(--terracotta);">
+        <a href="#tickets" class="block w-full text-center text-lg px-8 py-3 rounded-lg font-semibold" style="background-color: white; color: var(--sage);">
+            Reserve Your Seat
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-lg overflow-hidden rounded-lg" style="border: 1px solid #e5e5dd;">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r" style="border-color: #e5e5dd; background-color: #fcfcfa;">
+                <span class="inline-block px-4 py-2 text-sm font-semibold rounded-full mb-6" style="background-color: #eef4ec; color: var(--sage);">
+                    Spring Soirée
+                </span>
+                <h1 class="serif-elegant text-5xl md:text-6xl mb-6 leading-tight" style="color: var(--sage);">
+                    Garden Party<br/>at Sunset
+                </h1>
+                <p class="text-lg mb-8" style="color: #666; line-height: 1.6;">
+                    An evening of botanicals, bubbles, and beautiful company
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5 rounded-lg" style="background-color: white; border-left: 3px solid var(--terracotta);">
+                        <h3 class="text-sm uppercase mb-2 font-semibold" style="color: var(--sage); letter-spacing: 1px;">Date</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">Saturday, May 17, 2026</p>
+                        <p class="text-base" style="color: #666;">5:00 PM - 8:00 PM</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: white; border-left: 3px solid var(--terracotta);">
+                        <h3 class="text-sm uppercase mb-2 font-semibold" style="color: var(--sage); letter-spacing: 1px;">Location</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">Rosewood Estate Gardens</p>
+                        <p class="text-base" style="color: #666;">Private residence</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: white; border-left: 3px solid var(--terracotta);">
+                        <h3 class="text-sm uppercase mb-2 font-semibold" style="color: var(--sage); letter-spacing: 1px;">Attire</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">Garden party chic</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-lg px-8 py-4 rounded-lg font-semibold mt-10 transition-all" style="background-color: var(--sage); color: white; box-shadow: 0 2px 8px rgba(135, 168, 120, 0.3);">
+                    Reserve Your Seat
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 1px solid #e5e5dd;">
+                    <h3 class="text-sm uppercase mb-4 font-semibold" style="color: var(--sage); letter-spacing: 1px;">Hosted By</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center serif-elegant text-2xl" style="background-color: var(--sage); color: white;">
+                            RE
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold" style="color: var(--charcoal);">Rosewood Estate</h4>
+                            <p class="text-sm" style="color: #666;">Historic gardens</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-12">
+                    <section>
+                        <img src="../../images/phone_on_a_farm.png" alt="Garden" class="w-full h-auto object-cover rounded-lg" style="border: 1px solid #e5e5dd;">
+                    </section>
+
+                    <section>
+                        <h2 class="serif-elegant text-4xl mb-6" style="color: var(--sage);">About the Event</h2>
+                        <div class="wysiwyg-content">
+                            <p>Join us for an enchanting spring evening in the historic gardens of Rosewood Estate. As the sun sets over the flower beds and hedgerows, enjoy champagne, seasonal canapés, and the company of fellow garden enthusiasts and nature lovers.</p>
+                            <p>This intimate gathering is limited to 60 guests to preserve the tranquil atmosphere of the gardens.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5e5dd;">
+                        <div class="wysiwyg-content">
+                            <h3>The Experience</h3>
+                            <ul>
+                                <li>Champagne and botanical cocktails</li>
+                                <li>Seasonal canapés by local farm-to-table caterer</li>
+                                <li>Guided garden tour with the estate horticulturist</li>
+                                <li>Live acoustic music (classical guitar and violin)</li>
+                                <li>Flower arranging demonstration</li>
+                                <li>Take-home botanical favor from the garden</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5e5dd;">
+                        <div class="wysiwyg-content">
+                            <h3>The Gardens</h3>
+                            <p>Rosewood Estate features three acres of formal gardens originally designed in 1890. Spring blooms include roses, peonies, irises, and over 200 varieties of perennials. The garden is maintained using organic methods and serves as a haven for pollinators and songbirds.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5e5dd;">
+                        <div class="wysiwyg-content">
+                            <h3>Practical Details</h3>
+                            <p><strong>Parking:</strong> Valet service provided. <strong>Accessibility:</strong> Garden paths are gravel—flat shoes recommended. <strong>Weather:</strong> Event held rain or shine; covered pavilion available.</p>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-semibold" style="color: var(--sage);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

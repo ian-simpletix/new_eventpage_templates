@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Market V3 - Local Craft Fair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terracotta: #c2643e;
+            --warm-white: #fffefa;
+            --olive: #8b9556;
+            --clay: #a3563b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f7f4;
+            color: #3c3c3c;
+            padding-bottom: 100px;
+        }
+
+        .market-card {
+            background-color: var(--warm-white);
+            border: 2px solid var(--terracotta);
+            box-shadow: 4px 4px 0 var(--olive);
+        }
+
+        .wysiwyg-content { font-size: 18px; color: #3c3c3c; line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-size: 28px; color: var(--terracotta); margin-top: 40px; margin-bottom: 16px; font-weight: 700; }
+        .wysiwyg-content ul { list-style: disc; padding-left: 24px; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--terracotta); border-top: 2px solid var(--clay);">
+        <a href="#tickets" class="block w-full text-center text-xl px-8 py-3 font-bold" style="color: var(--warm-white);">
+            Free Entry
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row market-card overflow-hidden">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r-2" style="border-color: var(--terracotta);">
+                <span class="inline-block px-4 py-2 text-sm font-bold mb-6" style="background-color: var(--olive); color: white;">
+                    SATURDAY MARKET
+                </span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight" style="color: var(--terracotta);">
+                    Artisan Market
+                </h1>
+                <p class="text-xl mb-8" style="color: #5a5a5a; font-weight: 600;">
+                    Local makers, fresh food, live music
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5" style="background-color: #fef6ed; border: 2px solid var(--terracotta);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--clay); letter-spacing: 1px;">When</h3>
+                        <p class="text-lg font-bold" style="color: var(--terracotta);">Every Saturday</p>
+                        <p class="text-base">9:00 AM - 2:00 PM</p>
+                    </div>
+                    <div class="p-5" style="background-color: #fef6ed; border: 2px solid var(--terracotta);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--clay); letter-spacing: 1px;">Where</h3>
+                        <p class="text-lg font-bold" style="color: var(--terracotta);">Main Street Plaza</p>
+                        <p class="text-base">Downtown</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-xl px-8 py-4 font-bold mt-10 transition-all" style="background-color: var(--terracotta); color: var(--warm-white);">
+                    Free Entry
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 2px solid var(--terracotta);">
+                    <h3 class="text-sm uppercase mb-4 font-bold" style="color: var(--clay); letter-spacing: 1px;">Organized By</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 flex items-center justify-center font-bold text-2xl" style="background-color: var(--olive); color: white;">
+                            LM
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold" style="color: var(--terracotta);">Local Makers Collective</h4>
+                            <p class="text-sm">Supporting our community</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section style="border: 2px solid var(--terracotta);">
+                        <img src="../../images/phone_on_a_farm.png" alt="Market" class="w-full h-auto object-cover">
+                    </section>
+
+                    <section>
+                        <h2 class="text-4xl font-bold mb-4" style="color: var(--terracotta);">About the Market</h2>
+                        <div class="wysiwyg-content">
+                            <p>Every Saturday morning, our downtown plaza transforms into a vibrant gathering of local makers, farmers, food vendors, and musicians. Browse handmade goods, pick up fresh produce, grab breakfast from a food truck, and enjoy live music.</p>
+                            <p>Free entry. All vendors are local artisans and small businesses within 50 miles of downtown.</p>
+                        </div>
+                    </section>
+
+                    <section style="border-top: 2px solid var(--terracotta);" class="pt-8">
+                        <div class="wysiwyg-content">
+                            <h3>What You'll Find</h3>
+                            <ul>
+                                <li>Handmade ceramics, jewelry, and textiles</li>
+                                <li>Farm-fresh produce and flowers</li>
+                                <li>Baked goods and artisan food products</li>
+                                <li>Coffee, breakfast, and lunch vendors</li>
+                                <li>Live music from local musicians</li>
+                                <li>Kids' activities and face painting</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section style="border-top: 2px solid var(--terracotta);" class="pt-8">
+                        <div class="wysiwyg-content">
+                            <h3>Vendor Info</h3>
+                            <p>Interested in being a vendor? We welcome local makers and small food businesses. Booth fees start at $40/day. Email us at vendors@localmakerscollective.org for an application.</p>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-bold" style="color: var(--terracotta);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

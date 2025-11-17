@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Bodies V3 - Active Community Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #ff6b6b;
+            --teal: #20c997;
+            --light-gray: #f1f3f5;
+            --charcoal: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            padding-bottom: 100px;
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--charcoal); line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-size: 28px; color: var(--coral); margin-top: 40px; margin-bottom: 16px; font-weight: 700; }
+        .wysiwyg-content ul { list-style: disc; padding-left: 24px; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--coral); box-shadow: 0 -2px 10px rgba(0,0,0,0.1);">
+        <a href="#tickets" class="block w-full text-center text-xl px-8 py-3 rounded-lg font-bold" style="background-color: white; color: var(--coral);">
+            Join the Run
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-lg overflow-hidden rounded-lg">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r" style="border-color: #e5e5e5;">
+                <span class="inline-block px-4 py-2 text-sm font-bold rounded-full mb-6" style="background-color: #ffe8e8; color: var(--coral);">
+                    5K Community Run
+                </span>
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-none" style="color: var(--charcoal);">
+                    Saturday<br/>Morning<br/>Run
+                </h1>
+                <p class="text-lg mb-8 font-medium" style="color: #666;">
+                    All paces welcome • Walk or run • Free event
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5 rounded-lg" style="background-color: #e8faf6; border-left: 4px solid var(--teal);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--teal); letter-spacing: 1px;">When</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">Every Saturday</p>
+                        <p class="text-base" style="color: #666;">8:00 AM start</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: #e8faf6; border-left: 4px solid var(--teal);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--teal); letter-spacing: 1px;">Where</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">Riverside Park</p>
+                        <p class="text-base" style="color: #666;">Meet at main entrance</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: #e8faf6; border-left: 4px solid var(--teal);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--teal); letter-spacing: 1px;">Distance</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">5K (3.1 miles)</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-lg px-8 py-4 rounded-lg font-bold mt-10 transition-all" style="background-color: var(--coral); color: white; box-shadow: 0 4px 6px rgba(255, 107, 107, 0.3);">
+                    Join the Run
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 1px solid #e5e5e5;">
+                    <h3 class="text-sm uppercase mb-4 font-bold" style="color: var(--teal); letter-spacing: 1px;">Organized By</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center font-extrabold text-2xl" style="background: linear-gradient(135deg, var(--coral) 0%, var(--teal) 100%); color: white;">
+                            RC
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold" style="color: var(--charcoal);">Riverside Runners Club</h4>
+                            <p class="text-sm" style="color: #666;">Community fitness</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section>
+                        <img src="../../images/rave.png" alt="Run" class="w-full h-auto object-cover rounded-lg">
+                    </section>
+
+                    <section>
+                        <h2 class="text-4xl font-bold mb-4" style="color: var(--coral);">About the Run</h2>
+                        <div class="wysiwyg-content">
+                            <p>Join us every Saturday morning for a friendly 5K run/walk through Riverside Park. All fitness levels welcome—whether you're training for a marathon or just getting started, you'll find your pace here.</p>
+                            <p>We have pace groups from 8-minute miles to 15-minute miles, plus walkers. No one gets left behind!</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 2px solid #f1f3f5;">
+                        <div class="wysiwyg-content">
+                            <h3>What to Expect</h3>
+                            <ul>
+                                <li>Free event—just show up!</li>
+                                <li>Pace groups led by experienced runners</li>
+                                <li>Scenic 5K route through the park</li>
+                                <li>Water stations along the route</li>
+                                <li>Coffee and bagels after (optional $5)</li>
+                                <li>Friendly, supportive community</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 2px solid #f1f3f5;">
+                        <div class="wysiwyg-content">
+                            <h3>What to Bring</h3>
+                            <ul>
+                                <li>Running shoes and comfortable clothes</li>
+                                <li>Water bottle</li>
+                                <li>Positive attitude!</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-bold" style="color: var(--coral);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

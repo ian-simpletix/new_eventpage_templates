@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Ground V3 - Nonprofit Fundraiser</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-blue: #2c5aa0;
+            --soft-white: #fafafa;
+            --optimistic-yellow: #f9c74f;
+            --charcoal: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--charcoal);
+            padding-bottom: 100px;
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--charcoal); line-height: 1.8; }
+        .wysiwyg-content p { margin-bottom: 18px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-size: 28px; color: var(--warm-blue); margin-top: 40px; margin-bottom: 16px; font-weight: 700; }
+        .wysiwyg-content ul { list-style: disc; padding-left: 24px; }
+        .wysiwyg-content li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--warm-blue); box-shadow: 0 -4px 12px rgba(0,0,0,0.1);">
+        <a href="#tickets" class="block w-full text-center text-xl px-8 py-3 rounded-lg font-bold" style="background-color: var(--optimistic-yellow); color: var(--warm-blue);">
+            Get Tickets
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-lg overflow-hidden rounded-lg">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r" style="border-color: #e5e5e5;">
+                <span class="inline-block px-4 py-2 text-sm font-bold rounded-full mb-6" style="background-color: #fff7e6; color: var(--warm-blue);">
+                    Fundraising Gala
+                </span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight" style="color: var(--warm-blue);">
+                    Common Ground Gala
+                </h1>
+                <p class="text-lg mb-8 font-medium" style="color: #666;">
+                    Building community through shared opportunity
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5 rounded-lg" style="background-color: #f0f5fb; border-left: 4px solid var(--warm-blue);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--warm-blue); letter-spacing: 1px;">Date</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">Saturday, May 10, 2026</p>
+                        <p class="text-base" style="color: #666;">6:00 PM - 10:00 PM</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: #f0f5fb; border-left: 4px solid var(--warm-blue);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--warm-blue); letter-spacing: 1px;">Location</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">Community Center Ballroom</p>
+                        <p class="text-base" style="color: #666;">Downtown</p>
+                    </div>
+                    <div class="p-5 rounded-lg" style="background-color: #fff7e6; border-left: 4px solid var(--optimistic-yellow);">
+                        <h3 class="text-sm uppercase mb-2 font-bold" style="color: var(--warm-blue); letter-spacing: 1px;">Tickets</h3>
+                        <p class="text-lg font-bold" style="color: var(--charcoal);">$75 general / $125 supporter</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-lg px-8 py-4 rounded-lg font-bold mt-10 transition-all" style="background-color: var(--warm-blue); color: white;">
+                    Get Tickets
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 1px solid #e5e5e5;">
+                    <h3 class="text-sm uppercase mb-4 font-bold" style="color: var(--warm-blue); letter-spacing: 1px;">Benefiting</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl" style="background-color: var(--warm-blue); color: white;">
+                            CG
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold" style="color: var(--charcoal);">Common Ground</h4>
+                            <p class="text-sm" style="color: #666;">Youth Education Nonprofit</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-12">
+                    <section>
+                        <img src="../../images/computer_for_a_conference.png" alt="Gala" class="w-full h-auto object-cover rounded-lg" style="border: 1px solid #e5e5e5;">
+                    </section>
+
+                    <section>
+                        <h2 class="text-4xl font-bold mb-6" style="color: var(--warm-blue);">About the Event</h2>
+                        <div class="wysiwyg-content">
+                            <p>Join us for our annual fundraising gala supporting Common Ground's mission to provide accessible education and mentorship programs to underserved youth in our community. An evening of connection, inspiration, and impact.</p>
+                            <p>All proceeds directly support scholarship programs, after-school tutoring, and college preparation services for students who need them most.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 2px solid #f5f7fa;">
+                        <div class="wysiwyg-content">
+                            <h3>The Evening Includes</h3>
+                            <ul>
+                                <li>Reception with appetizers and drinks</li>
+                                <li>Three-course dinner</li>
+                                <li>Keynote address from Dr. Maria Chen</li>
+                                <li>Student testimonials and success stories</li>
+                                <li>Silent auction</li>
+                                <li>Live entertainment</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 2px solid #f5f7fa;">
+                        <div class="wysiwyg-content">
+                            <h3>Our Impact</h3>
+                            <p>Over the past year, Common Ground served 350 students through our programs. 94% of our students graduated high school, and 78% enrolled in college—compared to 65% in their districts. Your support makes this possible.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 2px solid #f5f7fa;">
+                        <div class="wysiwyg-content">
+                            <h3>Ticket Levels</h3>
+                            <ul>
+                                <li><strong>General Admission ($75):</strong> Includes dinner, program, and auction access</li>
+                                <li><strong>Supporter ($125):</strong> Includes VIP reception, priority seating, and recognition in program</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-bold" style="color: var(--warm-blue);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

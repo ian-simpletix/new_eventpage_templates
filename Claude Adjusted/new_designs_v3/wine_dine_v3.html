@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine & Dine V3 - Culinary Tasting Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #5d1f35;
+            --cream: #f9f7f4;
+            --gold: #d4a574;
+            --charcoal: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            padding-bottom: 100px;
+        }
+
+        .serif-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--charcoal); line-height: 1.8; }
+        .wysiwyg-content p { margin-bottom: 20px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--burgundy); margin-top: 48px; margin-bottom: 16px; font-weight: 700; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content li { margin-bottom: 12px; padding-left: 24px; position: relative; }
+        .wysiwyg-content li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-size: 24px; line-height: 18px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: var(--burgundy); border-top: 1px solid var(--gold);">
+        <a href="#tickets" class="block w-full text-center text-lg px-8 py-3 rounded" style="background-color: var(--gold); color: var(--burgundy); font-weight: 600;">
+            Book Your Seat
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-lg overflow-hidden" style="border: 1px solid #ddd;">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r" style="border-color: #e5e5e5; background-color: #fdfcfb;">
+                <span class="inline-block px-4 py-2 text-sm rounded mb-6" style="background-color: #f5ebe0; color: var(--burgundy); font-weight: 600;">
+                    Wine Tasting Dinner
+                </span>
+                <h1 class="serif-elegant text-5xl md:text-6xl mb-6 leading-tight" style="color: var(--burgundy);">
+                    Harvest Table<br/>Dinner
+                </h1>
+                <p class="text-lg mb-8" style="color: #666; line-height: 1.6;">
+                    Five courses paired with exceptional wines
+                </p>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-5 rounded" style="background-color: white; border-left: 3px solid var(--gold);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--burgundy); font-weight: 600; letter-spacing: 1px;">Date</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">Friday, October 18, 2026</p>
+                        <p class="text-base" style="color: #666;">7:00 PM - 10:00 PM</p>
+                    </div>
+                    <div class="p-5 rounded" style="background-color: white; border-left: 3px solid var(--gold);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--burgundy); font-weight: 600; letter-spacing: 1px;">Location</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">The Vineyard House</p>
+                        <p class="text-base" style="color: #666;">Napa Valley, CA</p>
+                    </div>
+                    <div class="p-5 rounded" style="background-color: white; border-left: 3px solid var(--gold);">
+                        <h3 class="text-sm uppercase mb-2" style="color: var(--burgundy); font-weight: 600; letter-spacing: 1px;">Price</h3>
+                        <p class="text-lg font-semibold" style="color: var(--charcoal);">$165 per person</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-lg px-8 py-4 rounded mt-10 transition-all" style="background-color: var(--burgundy); color: white; font-weight: 600;">
+                    Book Your Seat
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 1px solid #e5e5e5;">
+                    <h3 class="text-sm uppercase mb-4" style="color: var(--burgundy); font-weight: 600; letter-spacing: 1px;">Hosted By</h3>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center serif-elegant text-2xl" style="background-color: var(--burgundy); color: white;">
+                            VH
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold" style="color: var(--charcoal);">The Vineyard House</h4>
+                            <p class="text-sm" style="color: #666;">Estate Winery & Kitchen</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-12">
+                    <section>
+                        <img src="../../images/computer_for_a_conference.png" alt="Dinner" class="w-full h-auto object-cover rounded" style="border: 1px solid #ddd;">
+                    </section>
+
+                    <section>
+                        <h2 class="serif-elegant text-4xl mb-6" style="color: var(--burgundy);">About the Dinner</h2>
+                        <div class="wysiwyg-content">
+                            <p>Join us for an intimate five-course dinner celebrating the autumn harvest. Chef Elena Rossi will prepare seasonal dishes highlighting local ingredients, each paired with wines from our estate vineyards.</p>
+                            <p>Limited to 24 guests. Vegetarian and dietary accommodations available with advance notice.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5e5e5;">
+                        <div class="wysiwyg-content">
+                            <h3>The Menu</h3>
+                            <ul>
+                                <li>Amuse-bouche with sparkling rosé</li>
+                                <li>Butternut squash soup, crispy sage, chardonnay</li>
+                                <li>Roasted beet salad, goat cheese, pinot noir</li>
+                                <li>Duck breast, root vegetables, cabernet blend</li>
+                                <li>Pear tart, late harvest dessert wine</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 1px solid #e5e5e5;">
+                        <div class="wysiwyg-content">
+                            <h3>What's Included</h3>
+                            <ul>
+                                <li>Five-course seasonal dinner</li>
+                                <li>Wine pairings for each course</li>
+                                <li>Welcome reception with sparkling wine</li>
+                                <li>Coffee and tea service</li>
+                                <li>Tour of the vineyard (weather permitting)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10" style="color: #666;">
+        <p>Powered by <span class="font-semibold" style="color: var(--burgundy);">SimpleTix</span></p>
+    </footer>
+</body>
+</html>
