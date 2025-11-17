@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterpress Workshop - Print Craft Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #fef9f3;
+            color: #292524;
+            padding-bottom: 100px;
+        }
+        .font-typewriter { font-family: 'Special Elite', cursive; }
+        .print-frame {
+            background-color: #fff;
+            box-shadow: 6px 6px 0px #78350f;
+            border: 3px solid #78350f;
+            border-radius: 0;
+        }
+        .letterpress-button {
+            width: 100%;
+            text-align: center;
+            padding: 16px 32px;
+            background-color: #d97706;
+            color: #fff;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.5rem;
+            border: 3px dashed #78350f;
+            border-radius: 0;
+            transition: all 0.2s;
+        }
+        .letterpress-button:hover { opacity: 0.85; }
+        .mobile-letterpress-button {
+            background-color: #d97706;
+            color: #fff;
+            font-family: 'Special Elite', cursive;
+            border-top: 3px dashed #78350f;
+        }
+        .wysiwyg-content { font-size: 18px; color: #292524; line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Special Elite', cursive; font-size: 32px; color: #292524; margin-top: 40px; margin-bottom: 12px; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content ul li::before { content: "→ "; margin-right: 8px; color: #d97706; font-weight: bold; }
+        .wysiwyg-content ul li { margin-bottom: 8px; }
+        .ink-box { background-color: #fef3c7; padding: 20px; border: 2px solid #92400e; border-radius: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50 mobile-letterpress-button">
+        <a href="#tickets" class="block w-full text-center font-typewriter text-xl px-6 py-2">
+            SIGN UP - $85
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-3xl p-6 md:p-12">
+        <div class="print-frame p-6 md:p-10">
+
+            <section class="border-3 border-amber-900" style="border-width: 3px; border-style: solid; border-color: #78350f;">
+                <img src="../../images/zine.png" alt="Workshop" class="w-full h-auto object-cover">
+            </section>
+
+            <section class="mt-8 text-left">
+                <span class="font-typewriter text-2xl text-stone-900 ink-box inline-block px-3 py-1">
+                    HANDS-ON WORKSHOP
+                </span>
+                <h1 class="font-typewriter text-6xl md:text-7xl font-bold text-stone-900 mt-6 mb-6 leading-none">
+                    LETTERPRESS PRINTING 101
+                </h1>
+                <div class="space-y-3 text-stone-900 text-xl border-y-3 py-6 font-bold" style="border-top-width: 3px; border-bottom-width: 3px; border-color: #78350f;">
+                    <div class="flex">
+                        <span class="w-24 font-typewriter">DATE:</span>
+                        <span class="flex-1">SATURDAY, MAY 17, 2026</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-24 font-typewriter">TIME:</span>
+                        <span class="flex-1">10:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-24 font-typewriter">PLACE:</span>
+                        <span class="flex-1">INKWELL PRINT STUDIO</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-24 font-typewriter"></span>
+                        <span class="flex-1">BROOKLYN, NY</span>
+                    </div>
+                </div>
+            </section>
+
+            <a href="#tickets" class="hidden md:block letterpress-button mt-10">
+                SIGN UP - $85
+            </a>
+
+            <section class="mt-8">
+                <h2 class="font-typewriter text-4xl text-stone-900 mb-3">ABOUT THIS WORKSHOP:</h2>
+                <div class="wysiwyg-content">
+                    <p>Learn the art of traditional letterpress printing in this hands-on, full-day workshop. Work with vintage printing presses, set metal type by hand, mix inks, and leave with prints you made yourself.</p>
+                    <p>No experience necessary. All materials and equipment provided. Small class size ensures personalized instruction.</p>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8" style="border-top: 3px solid #78350f;">
+                <div class="wysiwyg-content">
+                    <h3>YOU'LL LEARN:</h3>
+                    <ul>
+                        <li>History and fundamentals of letterpress printing</li>
+                        <li>How to set metal and wood type</li>
+                        <li>Ink mixing and color theory basics</li>
+                        <li>Operating vintage tabletop presses</li>
+                        <li>Registration and multi-color printing techniques</li>
+                        <li>Proper paper selection and handling</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8" style="border-top: 3px solid #78350f;">
+                <div class="wysiwyg-content">
+                    <h3>WHAT'S INCLUDED:</h3>
+                    <ul>
+                        <li>6 hours of hands-on instruction</li>
+                        <li>All printing materials (paper, ink, type)</li>
+                        <li>Your printed pieces to take home</li>
+                        <li>Light refreshments and coffee throughout the day</li>
+                        <li>Digital resource guide with printing tips</li>
+                        <li>10% discount on future studio rentals</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8" style="border-top: 3px solid #78350f;">
+                <div class="wysiwyg-content">
+                    <h3>WHAT TO BRING:</h3>
+                    <ul>
+                        <li>Wear clothes you don't mind getting ink on</li>
+                        <li>Closed-toe shoes (studio requirement)</li>
+                        <li>Notebook for taking notes (optional)</li>
+                        <li>Your curiosity and patience</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8" style="border-top: 3px solid #78350f;">
+                <h2 class="font-typewriter text-4xl text-stone-900 mb-3">INSTRUCTOR:</h2>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/100x100/fef3c7/78350f?text=MT" alt="Instructor" class="w-20 h-20 object-cover border-3 border-amber-900" style="border-width: 3px; border-color: #78350f; border-radius: 0;">
+                    <div class="ml-4">
+                        <h4 class="text-2xl font-bold text-stone-900 font-typewriter">MARIA TORRES</h4>
+                        <p class="text-lg text-stone-700">Master Printer, 15+ years experience</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-stone-600">
+        <p>Powered by <span class="font-bold text-stone-800">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

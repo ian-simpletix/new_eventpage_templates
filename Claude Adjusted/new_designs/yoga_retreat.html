@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Retreat - Wellness Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfc;
+            padding-bottom: 100px;
+        }
+        .css-slideshow {
+            position: relative; width: 100%; padding-top: 62.5%;
+            overflow: hidden; border-radius: 12px; background: #f7f9f5;
+        }
+        .css-slideshow > div {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; animation: fade 25s infinite;
+        }
+        .css-slideshow > div:nth-child(1) { animation-delay: 0s; }
+        .css-slideshow > div:nth-child(2) { animation-delay: 5s; }
+        .css-slideshow[data-image-count="1"] > div:nth-child(1) { opacity: 1; animation: none; }
+        @keyframes fade {
+            0% { opacity: 0; } 10% { opacity: 1; } 20% { opacity: 1; } 30% { opacity: 0; } 100% { opacity: 0; }
+        }
+        .wysiwyg-content { font-size: 18px; color: #374151; line-height: 1.75; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-size: 28px; font-weight: 300; color: #1f2937; margin-top: 40px; margin-bottom: 16px; }
+        .wysiwyg-content ul { list-style: disc; padding-left: 24px; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky Footer CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 border-t border-emerald-100 z-50 shadow-lg">
+        <a href="#tickets" class="block w-full text-center bg-emerald-700 text-white font-semibold text-lg px-8 py-3 rounded-full hover:bg-emerald-800 transition duration-300">
+            Reserve Your Spot - $285
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-lg overflow-hidden border border-emerald-50">
+
+            <!-- DESKTOP Sticky Sidebar CTA -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r border-emerald-50">
+                <span class="inline-block bg-emerald-50 text-emerald-800 text-sm font-medium px-4 py-2 rounded-full">
+                    Wellness Retreat
+                </span>
+                <h1 class="text-5xl md:text-6xl font-light text-gray-900 leading-tight mt-6">
+                    Mountain Yoga Retreat
+                </h1>
+                <div class="space-y-6 mt-10 text-gray-700 text-lg">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-emerald-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Date & Time</h3>
+                            <p>Friday, March 15 - Sunday, March 17, 2026</p>
+                            <p class="text-sm text-gray-500">3-Day Retreat</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-emerald-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Location</h3>
+                            <p>Mountain View Retreat Center</p>
+                            <p class="text-sm text-gray-500">Big Sur, California</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-emerald-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Group Size</h3>
+                            <p>Limited to 20 participants</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center bg-emerald-700 text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-emerald-800 transition duration-300 mt-10 shadow-md">
+                    Reserve Your Spot - $285
+                </a>
+
+                <div class="mt-10 pt-8 border-t border-emerald-50">
+                    <h3 class="font-semibold text-gray-900 text-lg mb-4">Hosted by</h3>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/100x100/d1fae5/059669?text=SM" alt="Host Avatar" class="w-16 h-16 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="text-xl font-semibold text-gray-900">Sarah Martinez</h4>
+                            <p class="text-gray-600">Certified Yoga Instructor</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section class="css-slideshow" data-image-count="2">
+                        <div style="background-image: url('../../images/yoga.png');"></div>
+                        <div style="background-image: url('../../images/yoga.png');"></div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-light text-gray-900 mb-4">About the Retreat</h2>
+                        <div class="wysiwyg-content">
+                            <p>Escape to the mountains for three days of rejuvenation, mindful movement, and deep relaxation. Our Mountain Yoga Retreat offers a perfect blend of daily yoga practices, guided meditation, nourishing meals, and time to reconnect with yourself and nature.</p>
+                            <p>Whether you're new to yoga or have an established practice, this retreat is designed to meet you where you are and support your journey toward greater wellbeing.</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <h3>What's Included</h3>
+                            <ul>
+                                <li>2 nights accommodation in shared or private rooms</li>
+                                <li>All vegetarian meals and snacks</li>
+                                <li>Daily morning and evening yoga sessions</li>
+                                <li>Guided meditation and breathwork</li>
+                                <li>Nature walks and free time for relaxation</li>
+                                <li>Welcome gift bag with retreat essentials</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <h3>Daily Schedule</h3>
+                            <p><strong>7:00 AM</strong> - Morning meditation & sunrise yoga<br>
+                            <strong>9:00 AM</strong> - Wholesome breakfast<br>
+                            <strong>11:00 AM</strong> - Workshop or nature walk<br>
+                            <strong>1:00 PM</strong> - Lunch & free time<br>
+                            <strong>5:00 PM</strong> - Evening yoga practice<br>
+                            <strong>7:00 PM</strong> - Dinner & community time</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <h3>What to Bring</h3>
+                            <ul>
+                                <li>Comfortable clothing for yoga and outdoor activities</li>
+                                <li>Yoga mat (or let us know if you need to borrow one)</li>
+                                <li>Water bottle and any personal items</li>
+                                <li>Journal for reflection</li>
+                                <li>Open heart and curious mind</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-light text-gray-900 mb-4">Location</h2>
+                        <div class="rounded-lg overflow-hidden shadow-md">
+                            <img src="https://placehold.co/800x450/f7f9f5/059669?text=Map+to+Mountain+View+Retreat" alt="Map" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">The retreat center is located 2.5 hours south of San Francisco in the heart of Big Sur. Detailed directions will be sent upon registration.</p>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-gray-500">
+        <p>Powered by <span class="font-semibold text-gray-700">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

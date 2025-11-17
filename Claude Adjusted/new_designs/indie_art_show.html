@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Art Show - Risograph Craft Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --art-blue: #0078bf;
+            --art-orange: #ff6c47;
+            --art-cream: #fef9f3;
+            --art-black: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: var(--art-cream);
+            color: var(--art-black);
+            padding-bottom: 100px;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .art-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .art-frame {
+            background-color: #fff;
+            box-shadow: 6px 6px 0 var(--art-blue);
+            border: 4px solid var(--art-black);
+            border-radius: 0;
+        }
+
+        .art-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--art-blue);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .art-subtitle {
+            font-family: 'Special Elite', cursive;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--art-orange);
+            letter-spacing: 2px;
+        }
+
+        .art-block-blue {
+            background-color: var(--art-blue);
+            color: var(--art-cream);
+            padding: 12px 24px;
+            border-radius: 0;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .art-block-orange {
+            background-color: var(--art-orange);
+            color: var(--art-cream);
+            padding: 16px 32px;
+            border-radius: 0;
+            font-family: 'Special Elite', cursive;
+            font-size: 24px;
+            border: 4px solid var(--art-black);
+            transition: all 0.2s;
+        }
+
+        .art-block-orange:hover {
+            box-shadow: 4px 4px 0 var(--art-black);
+        }
+
+        .mobile-art-button {
+            background-color: var(--art-orange);
+            color: var(--art-cream);
+            font-family: 'Special Elite', cursive;
+            border-top: 4px solid var(--art-black);
+        }
+
+        .wysiwyg-content { font-size: 18px; color: var(--art-black); line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Special Elite', cursive; font-size: 32px; color: var(--art-black); margin-top: 40px; margin-bottom: 12px; text-transform: uppercase; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content ul li::before { content: "■ "; margin-right: 8px; color: var(--art-orange); }
+        .wysiwyg-content ul li { margin-bottom: 8px; }
+    </style>
+</head>
+<body class="art-container">
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50 mobile-art-button">
+        <a href="#tickets" class="block w-full text-center text-xl px-6 py-2">
+            OPENING NIGHT - FREE
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-3xl p-6 md:p-12">
+        <div class="art-frame p-6 md:p-10">
+
+            <section class="border-4 border-black">
+                <img src="../../images/zine.png" alt="Art Show" class="w-full h-auto object-cover">
+            </section>
+
+            <section class="mt-8 text-left">
+                <span class="art-block-blue inline-block">
+                    GALLERY EXHIBITION
+                </span>
+                <h1 class="art-title mt-6 mb-4">
+                    EMERGING VOICES
+                </h1>
+                <p class="art-subtitle mb-6">AN INDIE ART SHOWCASE</p>
+
+                <div class="space-y-3 text-black text-lg border-y-4 border-black py-6 font-bold">
+                    <div class="flex">
+                        <span class="w-32">OPENING:</span>
+                        <span class="flex-1">FRIDAY, SEPT 6, 6-9PM</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-32">ON VIEW:</span>
+                        <span class="flex-1">SEPT 6 - OCT 12, 2026</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-32">LOCATION:</span>
+                        <span class="flex-1">EASTSIDE GALLERY</span>
+                    </div>
+                    <div class="flex">
+                        <span class="w-32"></span>
+                        <span class="flex-1">SEATTLE, WA</span>
+                    </div>
+                </div>
+            </section>
+
+            <a href="#tickets" class="hidden md:block art-block-orange w-full text-center mt-10">
+                OPENING NIGHT - FREE
+            </a>
+
+            <section class="mt-8">
+                <h2 class="wysiwyg-content text-3xl font-special mb-3" style="font-family: 'Special Elite', cursive;">ABOUT THE SHOW:</h2>
+                <div class="wysiwyg-content">
+                    <p>Emerging Voices celebrates the work of 12 independent artists pushing boundaries in painting, printmaking, sculpture, and mixed media. This group exhibition features artists working outside traditional gallery systems, creating bold, personal, and uncompromising work.</p>
+                    <p>Opening night includes artist talks, live music, and light refreshments. All work is available for purchase directly from the artists.</p>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8 border-t-4 border-black">
+                <div class="wysiwyg-content">
+                    <h3>FEATURED ARTISTS:</h3>
+                    <ul>
+                        <li>LIA MARTINEZ - Abstract expressionist paintings</li>
+                        <li>KAI WILSON - Carved wood sculptures</li>
+                        <li>SOFIA NGUYEN - Risograph print series</li>
+                        <li>MARCUS BROWN - Mixed media collages</li>
+                        <li>ELENA GARCIA - Ceramic installations</li>
+                        <li>+ 7 more incredible artists</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8 border-t-4 border-black">
+                <div class="wysiwyg-content">
+                    <h3>OPENING NIGHT:</h3>
+                    <p><strong>6:00 PM</strong> - Doors open, welcome drinks<br>
+                    <strong>6:30 PM</strong> - Artist introductions & talks<br>
+                    <strong>7:30 PM</strong> - Live music performance<br>
+                    <strong>8:30 PM</strong> - Open gallery time, meet the artists</p>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8 border-t-4 border-black">
+                <div class="wysiwyg-content">
+                    <h3>GALLERY HOURS:</h3>
+                    <p><strong>THURSDAY - SATURDAY:</strong> 12:00 PM - 7:00 PM<br>
+                    <strong>SUNDAY:</strong> 12:00 PM - 5:00 PM<br>
+                    <strong>CLOSED MONDAY - WEDNESDAY</strong></p>
+                    <p>Admission is always free. Artist talks and special events throughout the run.</p>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8 border-t-4 border-black">
+                <div class="wysiwyg-content">
+                    <h3>PURCHASE INFO:</h3>
+                    <ul>
+                        <li>All work is for sale directly from artists</li>
+                        <li>Price lists available at front desk</li>
+                        <li>50% of proceeds go directly to artists</li>
+                        <li>Gallery takes zero commission</li>
+                        <li>Payment plans available for works over $500</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-8 pt-8 border-t-4 border-black">
+                <h2 class="wysiwyg-content text-3xl" style="font-family: 'Special Elite', cursive;">PRESENTED BY:</h2>
+                <div class="flex items-center mt-4">
+                    <div class="w-20 h-20 border-4 border-black flex items-center justify-center" style="background-color: var(--art-blue);">
+                        <span class="text-3xl" style="color: var(--art-cream); font-family: 'Special Elite', cursive;">EG</span>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="text-2xl font-bold text-black" style="font-family: 'Special Elite', cursive;">EASTSIDE GALLERY</h4>
+                        <p class="text-lg text-black">Supporting independent artists since 2018</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-stone-700">
+        <p>Powered by <span class="font-bold text-stone-900">SimpleTix</span></p>
+    </footer>
+</body>
+</html>
