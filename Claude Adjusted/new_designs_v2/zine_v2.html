@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zine V2 - 2-Column Punk Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #e2e8f0;
+            color: #000;
+            padding-bottom: 100px;
+        }
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+        .sharp { border-radius: 0; }
+        .zine-frame {
+            background-color: #fff;
+            box-shadow: 8px 8px 0px #000;
+            border: 2px solid #000;
+        }
+        .photocopy-image { filter: grayscale(1) contrast(1.7); }
+        .tape-button {
+            background-color: #fef08a;
+            color: #000;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            border: 2px dashed #a16207;
+            transition: all 0.2s;
+        }
+        .tape-button:hover { opacity: 0.8; }
+        .mobile-tape-button {
+            background-color: #fef08a;
+            color: #000;
+            font-family: 'Permanent Marker', cursive;
+            border-top: 2px dashed #a16207;
+        }
+        .wysiwyg-content { font-size: 18px; color: #000; line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Permanent Marker', cursive; font-size: 32px; color: #000; margin-top: 40px; margin-bottom: 12px; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content ul li::before { content: "* "; margin-right: 8px; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+        .highlight { background-color: #fef08a; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50 mobile-tape-button">
+        <a href="#tickets" class="block w-full text-center font-marker text-xl px-6 py-2">
+            GET TIX - $10
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row zine-frame overflow-hidden">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r-2" style="border-color: #000;">
+                <span class="font-marker text-2xl text-black highlight inline-block p-2 mb-6">
+                    ALL AGES SHOW
+                </span>
+                <h1 class="font-marker text-6xl md:text-7xl font-bold text-black mb-8 leading-none">
+                    NOISE COMPLAINT
+                </h1>
+
+                <div class="space-y-6 mt-10 text-lg">
+                    <div class="border-2 border-black p-4 sharp">
+                        <h3 class="font-marker text-xl mb-2">WHEN:</h3>
+                        <p class="font-bold">FRI DEC 12</p>
+                        <p class="text-base">DOORS @ 8PM</p>
+                    </div>
+                    <div class="border-2 border-black p-4 sharp">
+                        <h3 class="font-marker text-xl mb-2">WHERE:</h3>
+                        <p class="font-bold">THE RAT'S NEST</p>
+                        <p class="text-base">123 ALLEYWAY</p>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block tape-button w-full text-center px-8 py-4 mt-10 sharp">
+                    GET TIX - $10
+                </a>
+
+                <div class="mt-10 pt-8 border-t-2 border-black">
+                    <h3 class="font-marker text-xl mb-4">HOSTED BY:</h3>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/100x100/000000/FFFFFF?text=DIY" alt="Host Avatar" class="w-16 h-16 object-cover border-2 border-black">
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold">DIY BOOKING</h4>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section class="border-2 border-black sharp">
+                        <img src="../../images/zine.png" alt="Event" class="w-full h-auto object-cover sharp photocopy-image">
+                    </section>
+
+                    <section>
+                        <h2 class="font-marker text-4xl text-black mb-4">THE DEAL:</h2>
+                        <div class="wysiwyg-content">
+                            <p>3 BANDS. 10 BUCKS. NO REQUESTS. RESPECT THE SPACE.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8 border-t-2 border-black">
+                        <div class="wysiwyg-content">
+                            <h3>THE BANDS:</h3>
+                            <ul>
+                                <li>STATIC SHOCK (11PM)</li>
+                                <li>TRASH PANDAS (10PM)</li>
+                                <li>BASEMENT NOISE (9PM)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="pt-8 border-t-2 border-black">
+                        <div class="wysiwyg-content">
+                            <h3>THE RULES:</h3>
+                            <ul>
+                                <li>CASH ONLY AT THE DOOR</li>
+                                <li>ALL AGES WELCOME</li>
+                                <li>NO MOSHING NEAR THE GEAR</li>
+                                <li>BRING YOUR FRIENDS</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-black">
+        <p>Powered by <span class="font-bold">SimpleTix</span></p>
+    </footer>
+</body>
+</html>
