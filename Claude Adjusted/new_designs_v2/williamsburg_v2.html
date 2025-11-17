@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Williamsburg V2 - 2-Column Flyer Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F4E8;
+            padding-bottom: 100px;
+        }
+        .font-title-poster {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .sharp { border-radius: 0; }
+        .wysiwyg-content { font-size: 18px; color: #1f2937; line-height: 1.7; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Anton', sans-serif; font-size: 32px; color: #000; margin-top: 40px; margin-bottom: 16px; text-transform: uppercase; }
+        .wysiwyg-content ul { list-style: disc; padding-left: 24px; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky Footer CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 border-t-2 border-black z-50">
+        <a href="#tickets" class="block w-full text-center bg-black text-white font-title-poster text-xl px-8 py-3 sharp hover:bg-gray-800 transition duration-300">
+            Get Tickets - $20
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-xl sharp overflow-hidden border-4 border-black">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r-2 border-black">
+                <span class="inline-block bg-red-600 text-white text-sm font-semibold px-3 py-1 uppercase tracking-widest sharp">
+                    Film & Art
+                </span>
+                <h1 class="font-title-poster text-5xl md:text-6xl font-bold text-black mt-6 mb-6 leading-none">
+                    The Midnight Projection
+                </h1>
+
+                <div class="space-y-6 mt-10 text-lg text-gray-700">
+                    <div>
+                        <span class="font-title-poster text-black text-xl block mb-2">WHEN</span>
+                        <span class="font-medium">Saturday, Nov 30, 2026</span><br>
+                        <span class="font-medium">8:00 PM - 11:00 PM</span>
+                    </div>
+                    <div>
+                        <span class="font-title-poster text-black text-xl block mb-2">WHERE</span>
+                        <span class="font-medium">The Old Ironworks</span><br>
+                        <span class="font-medium">123 Kent Ave, Brooklyn, NY</span>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center bg-black text-white font-title-poster text-2xl px-8 py-4 sharp hover:bg-gray-800 transition duration-300 mt-10">
+                    Get Tickets - $20
+                </a>
+
+                <div class="mt-10 pt-8 border-t-2 border-black">
+                    <span class="font-title-poster text-black text-xl block mb-4">HOSTED BY</span>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/100x100/111827/FFFFFF?text=AP" alt="Host Avatar" class="w-16 h-16 sharp object-cover border-2 border-black">
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold text-gray-900">Anna Peterson</h4>
+                            <p class="text-gray-700">Film Critic & Curator</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section>
+                        <img src="../../images/warehouse.png" alt="Event" class="w-full h-auto object-cover sharp border-2 border-black">
+                    </section>
+
+                    <section>
+                        <h2 class="font-title-poster text-4xl text-black mb-4">About The Event</h2>
+                        <div class="wysiwyg-content">
+                            <p>A one-night-only screening of independent short films from five of NYC's most innovative new directors. Hosted at The Old Ironworks, The Midnight Projection is a celebration of lo-fi cinema.</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <h3>The Films</h3>
+                            <ul>
+                                <li><strong>"Asphalt"</strong> (Dir. J. Chen) - 15 min</li>
+                                <li><strong>"Subway Serenade"</strong> (Dir. M. Ramirez) - 10 min</li>
+                                <li><strong>"Neon & Concrete"</strong> (Dir. K. Williams) - 12 min</li>
+                                <li><strong>"Late Train"</strong> (Dir. S. Park) - 18 min</li>
+                                <li><strong>"Bodega Dreams"</strong> (Dir. L. Martinez) - 14 min</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <h3>What to Expect</h3>
+                            <p>All five films explore themes of urban life, isolation, and connection in contemporary New York. Post-screening Q&A with the directors and refreshments will follow in the adjacent gallery space.</p>
+                            <p>This is a BYOB event. Outside food and drink welcome. Cash bar available.</p>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-gray-600">
+        <p>Powered by <span class="font-bold text-gray-800">SimpleTix</span></p>
+    </footer>
+</body>
+</html>
