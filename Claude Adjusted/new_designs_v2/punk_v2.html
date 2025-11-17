@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk V2 - 2-Column DIY Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Courier+Prime:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #f5f5dc;
+            color: #000000;
+            padding-bottom: 100px;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="200" height="200" filter="url(%23noise)\" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+        }
+
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+
+        .wysiwyg-content { font-size: 18px; color: #000; line-height: 1.8; font-family: 'Courier Prime', monospace; font-weight: 700; }
+        .wysiwyg-content p { margin-bottom: 16px; }
+        .wysiwyg-content h2, .wysiwyg-content h3 { font-family: 'Bebas Neue', cursive; font-size: 32px; color: #ff0000; margin-top: 40px; margin-bottom: 16px; letter-spacing: 2px; }
+        .wysiwyg-content ul { list-style: none; padding-left: 0; }
+        .wysiwyg-content ul li::before { content: "■ "; margin-right: 8px; color: #ff0000; }
+        .wysiwyg-content li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background-color: #000000; border-top: 3px solid #ff0000;">
+        <a href="#tickets" class="block w-full text-center text-xl px-8 py-3 font-bebas" style="background-color: #ff0000; color: #ffffff; border: 2px solid #ffffff;">
+            GET TICKETS NOW
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white overflow-hidden" style="border: 5px solid #000000; box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3); transform: rotate(-0.5deg);">
+
+            <!-- DESKTOP Sticky Sidebar -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r-3" style="border-color: #000000; border-right-width: 3px; position: relative;">
+                <div style="display: inline-block; border: 3px dashed #ff0000; padding: 8px 16px; transform: rotate(-8deg); font-family: 'Bebas Neue', cursive; font-size: 20px; color: #ff0000; background-color: rgba(255, 0, 0, 0.05); margin-bottom: 24px;">
+                    DIY SHOW
+                </div>
+                <h1 style="font-family: 'Permanent Marker', cursive; font-size: 48px; font-weight: 700; color: #000000; margin-bottom: 24px; line-height: 1.2; transform: rotate(-2deg);">
+                    UNDERGROUND<br/>MUSIC<br/>FESTIVAL
+                </h1>
+
+                <div class="space-y-6 mt-10">
+                    <div class="p-4" style="background-color: #ffffff; border: 3px solid #000000; transform: rotate(1deg); position: relative;">
+                        <div style="position: absolute; top: -10px; right: -10px; font-size: 24px; color: #ff0000;">✖</div>
+                        <div class="font-bebas text-sm mb-2" style="letter-spacing: 2px;">DATE</div>
+                        <div class="font-marker text-xl">APRIL 20<br/>2026</div>
+                    </div>
+                    <div class="p-4" style="background-color: #ffffff; border: 3px solid #000000; transform: rotate(-1.5deg); position: relative;">
+                        <div style="position: absolute; top: -10px; right: -10px; font-size: 24px; color: #ff0000;">✖</div>
+                        <div class="font-bebas text-sm mb-2" style="letter-spacing: 2px;">DOORS</div>
+                        <div class="font-marker text-xl">7:00 PM<br/>SHARP</div>
+                    </div>
+                    <div class="p-4" style="background-color: #ffffff; border: 3px solid #000000; transform: rotate(1deg); position: relative;">
+                        <div style="position: absolute; top: -10px; right: -10px; font-size: 24px; color: #ff0000;">✖</div>
+                        <div class="font-bebas text-sm mb-2" style="letter-spacing: 2px;">LOCATION</div>
+                        <div class="font-marker text-xl">THE WAREHOUSE<br/>DISTRICT 9</div>
+                    </div>
+                </div>
+
+                <a href="#tickets" class="hidden md:block w-full text-center text-xl px-8 py-4 font-bebas mt-10" style="background-color: #ff0000; color: #ffffff; border: 4px solid #000000; box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5); letter-spacing: 2px;">
+                    GET TICKETS
+                </a>
+
+                <div class="mt-10 pt-8" style="border-top: 3px solid #000000;">
+                    <div class="font-bebas text-sm mb-4" style="letter-spacing: 2px;">BY THE PEOPLE</div>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 flex items-center justify-center font-bebas text-3xl" style="background-color: #000000; color: #ff0000; border: 3px solid #ff0000;">
+                            DIY
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold">DIY BOOKING</h4>
+                            <p class="text-sm">Underground collective</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section style="border: 3px solid #000000;">
+                        <img src="../../images/warehouse.png" alt="Festival" class="w-full h-auto object-cover" style="filter: contrast(1.2) grayscale(0.3);">
+                    </section>
+
+                    <section style="background-color: #000000; color: #ffffff; padding: 24px; border: 4px solid #ff0000; transform: rotate(-1deg);">
+                        <h2 class="font-bebas text-4xl text-center mb-6" style="color: #ff0000; letter-spacing: 3px;">LINEUP</h2>
+                        <div class="wysiwyg-content" style="color: #ffffff;">
+                            <ul>
+                                <li>THE STATIC NOISE</li>
+                                <li>BROKEN FEEDBACK</li>
+                                <li>CONCRETE ROSES</li>
+                                <li>VINYL CASUALTIES</li>
+                                <li>THE DISSIDENTS</li>
+                                <li>ELECTRIC REBELLION</li>
+                                <li>LAST STAND</li>
+                                <li>+ SURPRISE GUESTS</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="wysiwyg-content">
+                            <p><strong style="font-family: 'Bebas Neue', cursive; font-size: 20px; letter-spacing: 1px;">NO CORPORATE SPONSORS. NO DRESS CODE. NO ATTITUDE.</strong></p>
+                            <p>This is raw, unfiltered music from bands that have something to say. Eight acts across two stages in a 200-capacity warehouse venue. Bring earplugs. Bring your friends. Bring cash for merch.</p>
+                        </div>
+                    </section>
+
+                    <section class="pt-8" style="border-top: 3px dashed #000000;">
+                        <div class="wysiwyg-content">
+                            <h3>WHAT TO EXPECT:</h3>
+                            <ul>
+                                <li>Two stages of non-stop music</li>
+                                <li>Local artist merchandise tables</li>
+                                <li>DIY screen printing station</li>
+                                <li>Zine library & swap</li>
+                                <li>Food trucks outside</li>
+                                <li>Cash bar (21+ with valid ID)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer style="background-color: #000000; color: #ffffff; text-align: center; padding: 32px; border: 3px solid #ff0000; margin-top: 48px; font-family: 'Courier Prime', monospace;">
+        <p>BY THE PEOPLE, FOR THE PEOPLE</p>
+        <p style="margin-top: 16px;">Powered by SimpleTix</p>
+    </footer>
+</body>
+</html>
