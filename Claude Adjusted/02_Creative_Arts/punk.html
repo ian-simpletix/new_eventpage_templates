@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDERGROUND MUSIC FESTIVAL | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Courier+Prime:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #f5f5dc;
+            color: #000000;
+            overflow-x: hidden;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+        }
+
+        /* Photocopier texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            color: #ffffff;
+            border-bottom: 3px solid #ff0000;
+            padding: 0.75rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transform: rotate(-0.5deg);
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transform: rotate(1deg);
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 3px solid #ff0000;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 1.25rem 2rem;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem 6rem;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 3rem 2rem 4rem;
+            }
+        }
+
+        /* Torn Paper Effect */
+        .paper-section {
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+            transform: rotate(-1deg);
+        }
+
+        .paper-section::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20%;
+            width: 40px;
+            height: 20px;
+            background:
+                radial-gradient(circle at 50% 0%, transparent 40%, #000 40%, #000 60%, transparent 60%);
+            background-size: 8px 20px;
+            background-repeat: repeat-x;
+        }
+
+        /* Safety Pin Effect */
+        .pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #666666;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            background-color: #cccccc;
+        }
+
+        .pin-1 { top: -15px; right: 10%; }
+        .pin-2 { bottom: -15px; left: 15%; }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #ffffff;
+            border: 5px solid #000000;
+            margin-bottom: 2rem;
+            position: relative;
+            background-image: url('../../images/warehouse.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Ransom Note Typography */
+        h1 {
+            font-size: 4rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            word-spacing: 0.5rem;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        h1 .word-1 { font-family: 'Bebas Neue', sans-serif; transform: rotate(-5deg); display: inline-block; }
+        h1 .word-2 { font-family: 'Permanent Marker', cursive; transform: rotate(3deg); display: inline-block; font-size: 0.9em; }
+        h1 .word-3 { font-family: 'Courier Prime', monospace; transform: rotate(-2deg); display: inline-block; font-weight: bold; }
+
+        /* Stamp Effect */
+        .stamp {
+            display: inline-block;
+            border: 3px dashed #ff0000;
+            padding: 0.5rem 1rem;
+            transform: rotate(-8deg);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin: 1rem 0;
+            background-color: rgba(255, 0, 0, 0.05);
+        }
+
+        /* Info Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            padding: 1.5rem;
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        .info-card:nth-child(even) {
+            transform: rotate(-1.5deg);
+        }
+
+        .info-card::after {
+            content: '✖';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            color: #ff0000;
+        }
+
+        .info-label {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        /* Lineup Section */
+        .lineup {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 2rem;
+            border: 4px solid #ff0000;
+            margin: 2rem 0;
+            transform: rotate(-1deg);
+        }
+
+        .lineup h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            color: #ff0000;
+        }
+
+        @media (max-width: 767px) {
+            .lineup h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .band-list {
+            list-style: none;
+        }
+
+        .band-item {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.3rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed #666666;
+            font-weight: bold;
+        }
+
+        .band-item:last-child {
+            border-bottom: none;
+        }
+
+        .band-item::before {
+            content: '■ ';
+            color: #ff0000;
+        }
+
+        /* Sticker Effects */
+        .sticker {
+            position: absolute;
+            background-color: #ffff00;
+            border: 2px solid #000000;
+            padding: 0.5rem 1rem;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1rem;
+            transform: rotate(-15deg);
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .sticker-1 {
+            top: 10%;
+            right: 5%;
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .sticker-2 {
+            bottom: 15%;
+            left: 5%;
+            background-color: #ffff00;
+            transform: rotate(12deg);
+        }
+
+        /* Details Section */
+        .details {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+        }
+
+        .details p {
+            margin-bottom: 1rem;
+        }
+
+        .details strong {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: #ff0000;
+            border: 5px solid #000000;
+            margin: 3rem 0;
+            transform: rotate(1deg);
+            position: relative;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 1.5rem 3rem;
+            text-decoration: none;
+            border: 4px solid #ffffff;
+            cursor: pointer;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+            transform: rotate(-2deg);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button-main:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+
+        @media (max-width: 767px) {
+            .cta-button-main {
+                font-size: 1.5rem;
+                padding: 1.25rem 2.5rem;
+            }
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            border: 3px solid #ff0000;
+            margin-top: 3rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Photocopied text effect */
+        .photocopy-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .photocopy-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>UNDERGROUND MUSIC FESTIVAL</h2>
+        <a href="#tickets" class="cta-button">GET TICKETS</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">GET TICKETS NOW</a>
+    </div>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero" id="observe-target">
+            <div class="pin pin-1"></div>
+            <div class="pin pin-2"></div>
+
+            <h1>
+                <span class="word-1">UNDERGROUND</span><br>
+                <span class="word-2">MUSIC</span><br>
+                <span class="word-3">FESTIVAL</span>
+            </h1>
+
+            <div class="stamp">APRIL 20, 2026</div>
+        </section>
+
+        <!-- Info Cards -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">DATE</div>
+                <div class="info-value">APRIL 20<br>2026</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">DOORS</div>
+                <div class="info-value">7:00 PM<br>SHARP</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">LOCATION</div>
+                <div class="info-value">THE WAREHOUSE<br>DISTRICT 9</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">AGES</div>
+                <div class="info-value">18+<br>WITH ID</div>
+            </div>
+        </div>
+
+        <!-- Lineup -->
+        <div class="lineup">
+            <h2>LINEUP</h2>
+            <ul class="band-list">
+                <li class="band-item">THE STATIC NOISE</li>
+                <li class="band-item">BROKEN FEEDBACK</li>
+                <li class="band-item">CONCRETE ROSES</li>
+                <li class="band-item">VINYL CASUALTIES</li>
+                <li class="band-item">THE DISSIDENTS</li>
+                <li class="band-item">ELECTRIC REBELLION</li>
+                <li class="band-item">LAST STAND</li>
+                <li class="band-item">+ SURPRISE GUESTS</li>
+            </ul>
+        </div>
+
+        <!-- Details -->
+        <div class="paper-section">
+            <div class="sticker sticker-1">DIY</div>
+            <div class="sticker sticker-2">ALL AGES</div>
+
+            <div class="details">
+                <p>
+                    <strong>NO CORPORATE SPONSORS. NO DRESS CODE. NO ATTITUDE.</strong>
+                </p>
+
+                <p>
+                    This is raw, unfiltered music from bands that have something to say.
+                    Eight acts across two stages in a 200-capacity warehouse venue.
+                    Bring earplugs. Bring your friends. Bring cash for merch.
+                </p>
+
+                <p>
+                    <strong>WHAT TO EXPECT:</strong><br>
+                    • Two stages of non-stop music<br>
+                    • Local artist merchandise tables<br>
+                    • DIY screen printing station<br>
+                    • Zine library & swap<br>
+                    • Food trucks outside<br>
+                    • Cash bar (21+ with valid ID)
+                </p>
+
+                <p>
+                    <strong>RULES:</strong><br>
+                    • No moshing during acoustic sets<br>
+                    • Respect the bands, respect each other<br>
+                    • No professional cameras<br>
+                    • What happens here, stays here
+                </p>
+
+                <p style="color: #ff0000; font-weight: bold;">
+                    LIMITED CAPACITY. TICKETS SELLING FAST. DON'T SLEEP ON THIS.
+                </p>
+            </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="paper-section" style="transform: rotate(1deg);">
+            <h2 style="font-family: 'Bebas Neue', cursive; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">
+                SET TIMES
+            </h2>
+            <div style="font-family: 'Courier Prime', monospace; font-size: 1.1rem; line-height: 1.8;">
+                <strong>MAIN STAGE:</strong><br>
+                7:30 PM - THE DISSIDENTS<br>
+                8:30 PM - CONCRETE ROSES<br>
+                9:45 PM - THE STATIC NOISE<br>
+                11:00 PM - SURPRISE HEADLINER<br><br>
+
+                <strong>SIDE STAGE:</strong><br>
+                8:00 PM - LAST STAND<br>
+                9:15 PM - VINYL CASUALTIES<br>
+                10:30 PM - BROKEN FEEDBACK<br>
+                11:45 PM - ELECTRIC REBELLION
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="#tickets" class="cta-button-main">GET TICKETS</a>
+            <p style="color: #ffffff; font-size: 1.3rem; margin-top: 1.5rem; font-family: 'Bebas Neue', cursive; letter-spacing: 0.05em;">
+                $25 ADVANCE • $35 AT DOOR • IF AVAILABLE
+            </p>
+        </div>
+
+        <div id="tickets"></div>
+
+        <!-- Warning -->
+        <div class="paper-section" style="border-color: #ff0000; transform: rotate(-1deg);">
+            <p style="text-align: center; font-size: 1.1rem; line-height: 1.6;">
+                <strong style="color: #ff0000;">WARNING:</strong><br>
+                This show will be LOUD. Earplugs will be available at the door.<br>
+                If you can't handle it, this probably isn't for you.<br>
+                All ticket sales are final. No refunds. No re-entry.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>BY THE PEOPLE, FOR THE PEOPLE</p>
+            <p style="margin-top: 1rem;">Powered by SimpleTix</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">
+                This is an all-ages event. 21+ for bar access.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

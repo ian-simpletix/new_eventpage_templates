@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VF5 - Cambridge Timeless Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FAF9F6; /* Ivory/Parchment */
+            padding-bottom: 100px; /* Space for sticky footer */
+        }
+        .font-serif-title { font-family: 'Playfair Display', serif; }
+        .document-frame {
+            max-width: 800px;
+            border: 1px solid #D1D5DB; 
+        }
+        .wysiwyg-content-classic { @apply text-lg text-gray-800 space-y-4; line-height: 1.8; }
+        .wysiwyg-content-classic h2, .wysiwyg-content-classic h3 { @apply font-serif-title text-3xl text-gray-900 mt-10 mb-4 pt-4 border-t border-gray-200; }
+        .wysiwyg-content-classic ul { @apply list-disc list-outside pl-6 space-y-2; }
+    </style>
+</head>
+<body class="bg-neutral-50">
+
+    <!-- DESKTOP/MOBILE Sticky Footer CTA -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 bg-white p-4 border-t border-gray-300 z-50 shadow-t-lg">
+        <div class="container mx-auto max-w-4xl flex flex-col md:flex-row justify-between items-center">
+            <div class="hidden md:block">
+                <h3 class="text-xl font-serif-title text-gray-900">The Perennial City: A Lecture</h3>
+                <p class="text-gray-600">Tuesday, November 18, 2026</p>
+            </div>
+            <a href="#tickets" class="w-full md:w-auto bg-blue-900 text-white font-semibold text-lg px-8 py-3 rounded-none shadow-sm hover:bg-blue-800 transition duration-300 text-center">
+                Reserve Your Seat
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-6 md:p-12">
+        <div class="document-frame mx-auto bg-white shadow-lg p-8 md:p-16">
+
+            <section>
+                <img src="../../images/lecture.png" alt="Event" class="w-full h-auto object-cover border border-gray-200">
+            </section>
+            
+            <section class="mt-10 text-center">
+                <h1 class="font-serif-title text-5xl md:text-6xl font-bold text-gray-900 mt-4 mb-6 leading-tight">
+                    The Perennial City: A Lecture
+                </h1>
+                
+                <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+                <div class="text-xl text-gray-800">
+                    <p>with</p>
+                    <p class="font-semibold text-2xl text-black mt-1">Dr. Eleanor Vance</p>
+                    <p class="text-gray-600">Professor of Classical History</p>
+                </div>
+                <!-- [PSEUDO-CODE: end if] -->
+                
+                <div class="space-y-4 text-gray-700 text-lg border-y border-gray-200 py-6 mt-8">
+                    <div class="flex flex-col md:flex-row justify-center md:space-x-8">
+                        <div>
+                            <h3 class="font-semibold text-gray-900 tracking-wide">DATE & TIME</h3>
+                            <p>Tuesday, November 18, 2026</p>
+                            <p>7:00 PM EST (Doors at 6:30)</p>
+                        </div>
+                        <!-- [PSEUDO-CODE: if (VenueName)] -->
+                        <div class="mt-4 md:mt-0">
+                            <h3 class="font-semibold text-gray-900 tracking-wide">LOCATION</h3>
+                            <p>The Athenaeum, Reading Room</p>
+                            <p>10 1/2 Beacon Street, Boston, MA</p>
+                        </div>
+                        <!-- [PSEUDO-CODE: end if] -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- In-page CTA (hidden on mobile, redundant on desktop) -->
+            <a href="#tickets" class="hidden w-full text-center bg-blue-900 text-white font-semibold text-lg px-8 py-4 rounded-none shadow-sm hover:bg-blue-800 transition duration-300 mt-10">
+                Reserve Your Seat
+            </a>
+
+            <section class="mt-10">
+                <h2 class="font-serif-title text-3xl text-gray-900 mb-4">About The Lecture</h2>
+                <div class="wysiwyg-content-classic">
+                    <p>Join us for an evening with Dr. Eleanor Vance as she discusses her decades-long research into the urban development of Rome, from its ancient foundations to the challenges of the modern era.</p>
+                </div>
+            </section>
+
+            <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+            <section class="mt-8">
+                <div class="wysiwyg-content-classic">
+                    <h3>Admission & Details</h3>
+                    <p>This event is free and open to the public. Registration is required. A small reception with light refreshments will follow the talk.</p>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end for loop] -->
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+        </div>
+    </div>
+</body>
+</html>

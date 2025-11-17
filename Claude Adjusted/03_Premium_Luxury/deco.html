@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART DECO - 1920s Luxury Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background-color: #0a0a0a;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(212, 175, 55, 0.03) 10px,
+                    rgba(212, 175, 55, 0.03) 20px
+                );
+            color: #f5f5dc;
+            padding-bottom: 100px;
+        }
+
+        .deco-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Art Deco gold color */
+        .deco-gold {
+            color: #d4af37;
+        }
+
+        .deco-gold-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #f2d06b 50%, #d4af37 100%);
+        }
+
+        /* Geometric borders */
+        .deco-border {
+            border: 3px solid #d4af37;
+            border-image: repeating-linear-gradient(
+                45deg,
+                #d4af37,
+                #d4af37 10px,
+                #f2d06b 10px,
+                #f2d06b 20px
+            ) 1;
+        }
+
+        .deco-frame {
+            border: 6px double #d4af37;
+            position: relative;
+            padding: 40px;
+        }
+
+        /* Corner ornaments */
+        .deco-frame::before,
+        .deco-frame::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #d4af37;
+        }
+
+        .deco-frame::before {
+            top: -3px;
+            left: -3px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .deco-frame::after {
+            bottom: -3px;
+            right: -3px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Typography */
+        .deco-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 84px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: #d4af37;
+            text-shadow:
+                0 0 20px rgba(212, 175, 55, 0.5),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 0.9;
+        }
+
+        .deco-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #f5f5dc;
+        }
+
+        /* Fan shape ornament */
+        .deco-fan {
+            width: 100px;
+            height: 50px;
+            background: conic-gradient(
+                from 180deg at 50% 100%,
+                #d4af37 0deg,
+                transparent 60deg,
+                transparent 120deg,
+                #d4af37 180deg
+            );
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .deco-fan::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 3px;
+            background: #d4af37;
+        }
+
+        /* Chevron pattern */
+        .deco-chevron {
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    #d4af37,
+                    #d4af37 10px,
+                    transparent 10px,
+                    transparent 20px,
+                    #d4af37 20px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    #d4af37,
+                    #d4af37 10px,
+                    transparent 10px,
+                    transparent 20px,
+                    #d4af37 20px
+                );
+            height: 10px;
+            margin: 30px 0;
+        }
+
+        /* Button */
+        .deco-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d06b 50%, #d4af37 100%);
+            color: #0a0a0a;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 60px;
+            border: 3px solid #d4af37;
+            box-shadow:
+                0 0 20px rgba(212, 175, 55, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            letter-spacing: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deco-button::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .deco-button:hover {
+            box-shadow:
+                0 0 30px rgba(212, 175, 55, 0.6),
+                inset 0 0 30px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Image treatment */
+        .deco-image {
+            border: 6px double #d4af37;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            filter: sepia(0.3) contrast(1.1);
+        }
+
+        /* Info cards */
+        .deco-info-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 3px solid #d4af37;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .deco-info-card::before,
+        .deco-info-card::after {
+            content: "❖";
+            position: absolute;
+            font-size: 20px;
+            color: #d4af37;
+        }
+
+        .deco-info-card::before {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .deco-info-card::after {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Host card */
+        .deco-host {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 6px double #d4af37;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .deco-host-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d06b 100%);
+            border: 4px solid #d4af37;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            display: flex;
+            align-items: center;
+            justify-center;
+            font-size: 60px;
+            font-weight: 900;
+            color: #0a0a0a;
+            flex-shrink: 0;
+        }
+
+        /* Mobile sticky */
+        #mobile-deco-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent, #0a0a0a);
+            border-top: 3px solid #d4af37;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        #mobile-deco-cta .deco-button {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        /* Desktop sticky */
+        #desktop-deco-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #0a0a0a, transparent);
+            border-bottom: 3px solid #d4af37;
+            padding: 20px;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s;
+        }
+
+        #desktop-deco-cta.show {
+            transform: translateY(0);
+        }
+
+        #desktop-deco-cta .deco-button {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #d4af37;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #f5f5dc;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-size: 20px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+                padding-top: 40px;
+            }
+
+            #mobile-deco-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktop-deco-cta {
+                display: none !important;
+            }
+
+            .deco-title {
+                font-size: 48px;
+                letter-spacing: 4px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .deco-frame {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-deco-cta">
+        <a href="#tickets" class="deco-button">
+            RESERVE
+        </a>
+    </div>
+
+    <!-- Desktop Sticky CTA -->
+    <div id="desktop-deco-cta">
+        <a href="#tickets" class="deco-button">
+            ◆ RESERVE YOUR SEAT ◆
+        </a>
+    </div>
+
+    <div class="deco-container p-4 md:p-12">
+
+        <div class="deco-frame">
+
+            <!-- Hero Image -->
+            <section class="mb-12">
+                <img src="../../images/concept_art.png" alt="THE GILDED GALA" class="w-full h-auto deco-image">
+            </section>
+
+            <!-- Ornament -->
+            <div class="deco-fan"></div>
+
+            <!-- Title Section -->
+            <section class="text-center mb-12" id="main-trigger">
+                <div class="deco-subtitle mb-6">
+                    ◆ AN EVENING OF SPLENDOR ◆
+                </div>
+                <h1 class="deco-title mb-8">
+                    THE<br/>GILDED<br/>GALA
+                </h1>
+                <div class="deco-subtitle">
+                    ◆ NINETEEN TWENTY-SIX REDUX ◆
+                </div>
+            </section>
+
+            <div class="deco-chevron"></div>
+
+            <!-- Event Info -->
+            <section class="mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="deco-info-card">
+                        <div class="deco-subtitle text-sm mb-3">DATE</div>
+                        <div class="text-3xl deco-gold mb-2">31</div>
+                        <div class="text-xl">December<br/>2026</div>
+                    </div>
+                    <div class="deco-info-card">
+                        <div class="deco-subtitle text-sm mb-3">TIME</div>
+                        <div class="text-3xl deco-gold mb-2">8:00 PM</div>
+                        <div class="text-xl">Grand<br/>Entrance</div>
+                    </div>
+                    <div class="deco-info-card">
+                        <div class="deco-subtitle text-sm mb-3">VENUE</div>
+                        <div class="text-2xl deco-gold mb-2">The Astoria</div>
+                        <div class="text-xl">Ballroom</div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="#tickets" class="deco-button hidden md:inline-block">
+                        ◆ RESERVE ◆
+                    </a>
+                </div>
+            </section>
+
+            <div class="deco-chevron"></div>
+
+            <!-- About -->
+            <section class="mb-12">
+                <h2>◆ ABOUT THE GALA ◆</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+                    Step back into the most dazzling decade of the twentieth century. THE GILDED GALA transports you to an era of unparalleled elegance, where jazz fills the air, champagne flows freely, and the spirit of the Roaring Twenties comes alive once more.
+                </p>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    Don your finest Art Deco attire—think beaded flapper dresses, tailored tuxedos, feathered headpieces, and jeweled accessories. This New Year's Eve, we celebrate in the grandest style of 1926.
+                </p>
+            </section>
+
+            <div class="deco-fan"></div>
+
+            <!-- Experience -->
+            <section class="mb-12">
+                <h2>◆ THE EXPERIENCE ◆</h2>
+                <div class="max-w-3xl mx-auto">
+                    <ul>
+                        <li><strong>Live Jazz Orchestra</strong> — The Metropolitan Ensemble performs hits of the era</li>
+                        <li><strong>Charleston Dance Lessons</strong> — Learn the moves that defined a generation</li>
+                        <li><strong>Champagne Tower</strong> — A spectacular centerpiece for midnight</li>
+                        <li><strong>Speakeasy Cocktails</strong> — Period-accurate libations from master mixologists</li>
+                        <li><strong>Photo Studio</strong> — Professional portraits in authentic 1920s settings</li>
+                        <li><strong>Midnight Countdown</strong> — Ring in 2027 with old-world glamour</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="deco-chevron"></div>
+
+            <!-- Dress Code -->
+            <section class="mb-12">
+                <h2>◆ DRESS CODE ◆</h2>
+                <div class="deco-frame" style="padding: 30px; background: rgba(212, 175, 55, 0.05);">
+                    <p style="text-align: center; font-size: 20px; margin-bottom: 0;">
+                        <strong>BLACK TIE / ART DECO ATTIRE REQUIRED</strong><br/>
+                        <span style="font-size: 16px; font-style: italic;">
+                            Flapper dresses, beaded gowns, tuxedos with tails, top hats, and period accessories strongly encouraged
+                        </span>
+                    </p>
+                </div>
+            </section>
+
+            <div class="deco-fan"></div>
+
+            <!-- Host -->
+            <section class="mb-12">
+                <h2>◆ PRESENTED BY ◆</h2>
+                <div class="deco-host">
+                    <div class="deco-host-avatar">
+                        A
+                    </div>
+                    <div>
+                        <h3 class="text-4xl font-bold deco-gold mb-2" style="font-family: 'Playfair Display', serif; letter-spacing: 2px;">THE ASTORIA SOCIETY</h3>
+                        <div class="text-xl">Purveyors of Timeless Elegance Since 1923</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+
+        </div>
+    </div>
+
+    <script>
+        // Desktop sticky header
+        const desktopCta = document.getElementById('desktop-deco-cta');
+        const mainTrigger = document.getElementById('main-trigger');
+
+        if (desktopCta && mainTrigger) {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        desktopCta.classList.add('show');
+                    } else {
+                        desktopCta.classList.remove('show');
+                    }
+                },
+                { threshold: 0.1 }
+            );
+            observer.observe(mainTrigger);
+        }
+    </script>
+</body>
+</html>

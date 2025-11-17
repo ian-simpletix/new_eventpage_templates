@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY Zine Fest | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Special+Elite&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Caveat', cursive;
+            background: linear-gradient(45deg, #f9f9f9 25%, transparent 25%, transparent 75%, #f9f9f9 75%, #f9f9f9),
+                        linear-gradient(45deg, #f9f9f9 25%, transparent 25%, transparent 75%, #f9f9f9 75%, #f9f9f9);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-color: #fef8e7;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(254, 248, 231, 0.98);
+            border-bottom: 3px dashed #ff6b9d;
+            padding: 1rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transform: rotate(-0.5deg);
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2rem;
+            transform: rotate(1deg);
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #ff6b9d;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border: 3px solid #2c2c2c;
+            cursor: pointer;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transform: rotate(-2deg);
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ff6b9d;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 3px dashed #2c2c2c;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #fef8e7;
+            color: #2c2c2c;
+            padding: 1.25rem 2rem;
+            text-decoration: none;
+            border: 3px solid #2c2c2c;
+            cursor: pointer;
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            padding: 2rem 1rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 3rem 2rem 4rem;
+            }
+        }
+
+        /* Torn Paper Effect */
+        .paper-piece {
+            background-color: #ffffff;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #2c2c2c;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .paper-piece::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, transparent 50%, #ff6b9d 50%);
+            border: 2px solid #2c2c2c;
+            border-bottom: none;
+            border-right: none;
+        }
+
+        .rotate-left {
+            transform: rotate(-2deg);
+        }
+
+        .rotate-right {
+            transform: rotate(1.5deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            margin: 2rem auto;
+            border: 5px solid #2c2c2c;
+            box-shadow: 8px 8px 0 rgba(255, 107, 157, 0.5);
+            transform: rotate(-3deg);
+            background: url('../../images/people_in_a_museum.png') center/cover;
+        }
+
+        @media (max-width: 767px) {
+            .hero-image {
+                height: 250px;
+            }
+        }
+
+        h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            transform: rotate(-1deg);
+            text-shadow: 3px 3px 0 rgba(255, 107, 157, 0.5);
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff6b9d;
+            transform: rotate(2deg);
+            display: inline-block;
+            background-color: #ffff99;
+            padding: 0.5rem 1rem;
+            border: 2px solid #2c2c2c;
+            margin-top: 1rem;
+        }
+
+        /* Tape Effect */
+        .tape {
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px dashed rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tape-1 {
+            top: -20px;
+            left: 10%;
+            transform: rotate(-15deg);
+        }
+
+        .tape-2 {
+            top: -20px;
+            right: 10%;
+            transform: rotate(12deg);
+        }
+
+        /* Info Sections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background-color: #fff;
+            padding: 2rem;
+            border: 3px solid #2c2c2c;
+            position: relative;
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card:nth-child(1) {
+            background-color: #ffe6f0;
+            transform: rotate(-1deg);
+        }
+
+        .info-card:nth-child(2) {
+            background-color: #e6f7ff;
+            transform: rotate(1.5deg);
+        }
+
+        .info-card:nth-child(3) {
+            background-color: #fff6e6;
+            transform: rotate(-1.2deg);
+        }
+
+        .info-label {
+            font-family: 'Indie Flower', cursive;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.5rem;
+            color: #2c2c2c;
+            line-height: 1.4;
+        }
+
+        /* Handwritten Text */
+        .handwritten {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            font-weight: 500;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 767px) {
+            .handwritten {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Features List */
+        .features {
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 2px solid #2c2c2c;
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item::before {
+            content: '✂';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+
+        .feature-item:nth-child(odd) {
+            transform: rotate(-0.5deg);
+            border-color: #ff6b9d;
+        }
+
+        .feature-item:nth-child(even) {
+            transform: rotate(0.8deg);
+            border-color: #00d4aa;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.5rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            transform: rotate(-1deg);
+            background-color: #ffff99;
+            padding: 1rem;
+            border: 3px solid #2c2c2c;
+            display: inline-block;
+            width: 100%;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 767px) {
+            .section-heading {
+                font-size: 2rem;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background-color: #ffffff;
+            border: 5px solid #2c2c2c;
+            position: relative;
+            box-shadow: 10px 10px 0 rgba(255, 107, 157, 0.3);
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #ff6b9d;
+            color: #ffffff;
+            padding: 1.5rem 3rem;
+            text-decoration: none;
+            border: 4px solid #2c2c2c;
+            cursor: pointer;
+            font-family: 'Special Elite', cursive;
+            font-size: 2rem;
+            transform: rotate(-2deg);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button-main:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+
+        @media (max-width: 767px) {
+            .cta-button-main {
+                font-size: 1.5rem;
+                padding: 1.25rem 2.5rem;
+            }
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        /* Stickers/Doodles */
+        .doodle {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>DIY Zine Fest 2026</h2>
+        <a href="#tickets" class="cta-button">Get Tix!</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Get Your Tickets!</a>
+    </div>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <h1>DIY<br>ZINE<br>FEST</h1>
+            <div class="hero-subtitle">Make • Share • Create</div>
+            <div class="hero-image" id="observe-target"></div>
+        </section>
+
+        <!-- Event Info -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="tape tape-1"></div>
+                <div class="info-label">When?</div>
+                <div class="info-value">May 10, 2026<br>12pm - 8pm</div>
+            </div>
+            <div class="info-card">
+                <div class="tape tape-2"></div>
+                <div class="info-label">Where?</div>
+                <div class="info-value">Community Arts Center<br>Downtown</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">How Much?</div>
+                <div class="info-value">Sliding Scale<br>$5-$20</div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="paper-piece rotate-left">
+            <p class="handwritten">
+                Join us for a day of cut-and-paste creativity! DIY Zine Fest celebrates independent publishing,
+                handmade art, and the underground zine community. Bring your scissors, glue, and imagination!
+            </p>
+        </div>
+
+        <!-- What's Happening -->
+        <h2 class="section-heading">What's Happening?</h2>
+
+        <div class="features">
+            <div class="feature-item">100+ Zine Creators & Vendors</div>
+            <div class="feature-item">Free Zine-Making Workshops All Day</div>
+            <div class="feature-item">Risograph Printing Demos</div>
+            <div class="feature-item">Zine Swap Table (Bring Yours!)</div>
+            <div class="feature-item">Live Music & Art Performances</div>
+            <div class="feature-item">Screen Printing Station</div>
+        </div>
+
+        <!-- Schedule -->
+        <h2 class="section-heading">Schedule</h2>
+
+        <div class="paper-piece rotate-right">
+            <div class="handwritten" style="font-size: 1.4rem;">
+                <strong>12:00pm</strong> - Doors Open! Vendor Tables Open<br>
+                <strong>1:00pm</strong> - Intro to Zine Making Workshop<br>
+                <strong>2:00pm</strong> - Collage Techniques Demo<br>
+                <strong>3:00pm</strong> - Open Mic / Zine Readings<br>
+                <strong>4:00pm</strong> - Screen Printing Workshop<br>
+                <strong>5:00pm</strong> - Risograph Printing Demo<br>
+                <strong>6:00pm</strong> - Live Music Performance<br>
+                <strong>7:00pm</strong> - Zine Swap & Mingle
+            </div>
+        </div>
+
+        <!-- Who Should Come -->
+        <div class="paper-piece rotate-left">
+            <h3 style="font-family: 'Special Elite', cursive; font-size: 2rem; margin-bottom: 1rem;">Who Should Come?</h3>
+            <p class="handwritten">
+                Artists • Writers • Makers • Curious Folks • Anyone who loves DIY culture •
+                People with stories to tell • Folks who miss the tactile joy of cut-and-paste •
+                You (yes, YOU!)
+            </p>
+        </div>
+
+        <!-- What to Bring -->
+        <div class="paper-piece rotate-right">
+            <h3 style="font-family: 'Special Elite', cursive; font-size: 2rem; margin-bottom: 1rem;">What to Bring?</h3>
+            <p class="handwritten">
+                Zines to trade • Art supplies if you want • Cash for vendors •
+                Your creativity • Good vibes • Open mind
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <div class="tape tape-1"></div>
+            <div class="tape tape-2"></div>
+            <a href="#tickets" class="cta-button-main">GET TICKETS!</a>
+            <p class="handwritten" style="margin-top: 2rem;">
+                Sliding scale admission • Nobody turned away for lack of funds!
+            </p>
+        </div>
+
+        <div id="tickets"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Made with love & glue sticks</p>
+            <p>Powered by SimpleTix</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

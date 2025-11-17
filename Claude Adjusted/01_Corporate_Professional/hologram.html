@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLOGRAM - Glassmorphism Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: #fff;
+            padding-bottom: 100px;
+        }
+        .font-orbit { font-family: 'Orbitron', sans-serif; }
+
+        /* Holographic gradient animation */
+        @keyframes holographic {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .holographic-text {
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: holographic 4s linear infinite;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            box-shadow:
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            box-shadow:
+                0 12px 48px 0 rgba(31, 38, 135, 0.5),
+                inset 0 0 30px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Iridescent button */
+        .hologram-button {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .hologram-button:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow:
+                0 12px 32px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Fixed corner button */
+        .corner-cta {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        /* WYSIWYG Styling */
+        .wysiwyg-content-holo {
+            @apply text-lg text-white/90 space-y-4;
+            line-height: 1.8;
+        }
+        .wysiwyg-content-holo h2, .wysiwyg-content-holo h3 {
+            @apply font-orbit text-3xl text-white mt-8 mb-4 uppercase tracking-wide;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .wysiwyg-content-holo ul {
+            @apply list-none pl-0 space-y-2;
+        }
+        .wysiwyg-content-holo ul li {
+            @apply pl-6 relative;
+        }
+        .wysiwyg-content-holo ul li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .wysiwyg-content-holo img {
+            @apply w-full h-auto my-6 rounded-2xl;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Depth layers */
+        .layer-1 { transform: translateZ(10px); }
+        .layer-2 { transform: translateZ(20px); }
+        .layer-3 { transform: translateZ(30px); }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50">
+        <div class="glass p-2">
+            <a href="#tickets" class="hologram-button block w-full text-center px-8 py-4">
+                ✧ REGISTER ✧
+            </a>
+        </div>
+    </div>
+
+    <!-- Desktop Fixed Corner CTA -->
+    <div class="corner-cta hidden md:block floating">
+        <a href="#tickets" class="hologram-button px-8 py-4 block">
+            ✧ REGISTER NOW ✧
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-5xl p-4 md:p-12">
+        <div class="glass-strong p-6 md:p-12">
+
+            <!-- Header -->
+            <section class="text-center mb-12">
+                <div class="text-white/70 text-sm font-semibold uppercase tracking-widest mb-4">
+                    Product Launch Event
+                </div>
+                <!-- MAPPING: Event Name -->
+                <h1 class="font-orbit text-5xl md:text-7xl holographic-text mb-6 leading-tight">
+                    NEXUS<br/>PRODUCT<br/>REVEAL
+                </h1>
+                <div class="glass inline-block px-6 py-2">
+                    <p class="text-white/90 text-lg">The Future Unveiled</p>
+                </div>
+            </section>
+
+            <!-- Main Event Image -->
+            <section class="mb-12">
+                <div class="glass p-4">
+                    <img src="../../images/concept_art.png" alt="Event" class="w-full h-auto object-cover rounded-2xl" style="filter: brightness(1.1) contrast(1.05);">
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass p-6">
+                        <div class="text-white/60 text-sm font-semibold uppercase tracking-wide mb-2">Date & Time</div>
+                        <!-- MAPPING: Event Date & Time -->
+                        <div class="text-white text-lg font-semibold">December 18, 2026</div>
+                        <div class="text-white/80 mt-1">Thu, 18 Dec 2026 // 6:00 PM PST</div>
+                    </div>
+                    <!-- [PSEUDO-CODE: if (VenueName)] -->
+                    <div class="glass p-6">
+                        <div class="text-white/60 text-sm font-semibold uppercase tracking-wide mb-2">Location</div>
+                        <!-- MAPPING: Venue Name & Address -->
+                        <div class="text-white text-lg font-semibold">The Prism Gallery</div>
+                        <div class="text-white/80 mt-1">500 Howard St, San Francisco, CA 94105</div>
+                    </div>
+                    <!-- [PSEUDO-CODE: end if] -->
+                </div>
+            </section>
+
+            <!-- Event Description -->
+            <section class="mb-12 glass-strong p-6 md:p-8">
+                <h2 class="font-orbit text-3xl text-white mb-6 uppercase">About the Event</h2>
+                <!-- MAPPING: 'Tell Us About Your Event' (Long Description) -->
+                <div class="wysiwyg-content-holo">
+                    <p>Step into the future at our exclusive product reveal event. Experience cutting-edge innovation through immersive holographic demonstrations, interactive AR experiences, and live presentations from our visionary team.</p>
+                    <p>Join industry leaders, tech enthusiasts, and forward-thinkers for an evening that will redefine what's possible.</p>
+                </div>
+            </section>
+
+            <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+            <section class="mb-12 glass p-6 md:p-8">
+                <div class="wysiwyg-content-holo">
+                    <!-- MAPPING: section.SectionTitle -->
+                    <h3>Experience Includes</h3>
+                    <!-- MAPPING: section.SectionContent -->
+                    <ul>
+                        <li>Exclusive first-look at our new flagship product</li>
+                        <li>Interactive holographic demonstrations</li>
+                        <li>Q&A with product designers and engineers</li>
+                        <li>Premium networking reception with cocktails</li>
+                    </ul>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end for loop] -->
+
+            <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+            <section class="mb-12 glass-strong p-6 md:p-8">
+                <h2 class="font-orbit text-2xl text-white mb-6 uppercase">Presented By</h2>
+                <div class="flex items-center space-x-6">
+                    <div class="glass w-20 h-20 flex items-center justify-center text-white font-orbit text-3xl" style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);">
+                        L
+                    </div>
+                    <div>
+                        <div class="text-white font-bold text-2xl">Lumina Technologies</div>
+                        <div class="text-white/70 text-lg">Innovation Through Design</div>
+                    </div>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end if] -->
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+
+        </div>
+    </div>
+
+    <!-- Floating orbs decoration -->
+    <div style="position: fixed; top: 20%; left: 10%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255,255,255,0.2), transparent); border-radius: 50%; filter: blur(30px); animation: float 8s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="position: fixed; bottom: 20%; right: 15%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,0.15), transparent); border-radius: 50%; filter: blur(40px); animation: float 10s ease-in-out infinite 2s; pointer-events: none;"></div>
+</body>
+</html>

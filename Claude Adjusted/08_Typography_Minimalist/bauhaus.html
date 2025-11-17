@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bauhaus Centenary Symposium | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Futura', 'Avenir', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffff00;
+            color: #000000;
+            padding: 1rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 3px solid #000000;
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border: 3px solid #000000;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: transform 0.2s ease;
+        }
+
+        .desktop-sticky-header .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ff0000;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 3px solid #000000;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #ffff00;
+            color: #000000;
+            padding: 1.25rem 2rem;
+            text-decoration: none;
+            border: 3px solid #000000;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            padding-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding-bottom: 2rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #ffff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        /* Geometric Shapes Background */
+        .shape {
+            position: absolute;
+        }
+
+        .circle-red {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            top: 10%;
+            right: 10%;
+        }
+
+        .square-blue {
+            width: 150px;
+            height: 150px;
+            background-color: #0000ff;
+            bottom: 15%;
+            left: 8%;
+            transform: rotate(45deg);
+        }
+
+        .triangle-black {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid #000000;
+            top: 20%;
+            left: 15%;
+        }
+
+        .circle-blue {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #0000ff;
+            bottom: 25%;
+            right: 20%;
+        }
+
+        @media (max-width: 767px) {
+            .circle-red {
+                width: 100px;
+                height: 100px;
+            }
+            .square-blue {
+                width: 80px;
+                height: 80px;
+            }
+            .triangle-black {
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 87px solid #000000;
+            }
+            .circle-blue {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-date {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 767px) {
+            .hero-date {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Section Styles */
+        .section-red {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 5rem 2rem;
+        }
+
+        .section-blue {
+            background-color: #0000ff;
+            color: #ffffff;
+            padding: 5rem 2rem;
+        }
+
+        .section-white {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 5rem 2rem;
+        }
+
+        .section-black {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5rem 2rem;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 767px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .section-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 767px) {
+            .section-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Grid Layout */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .grid-item {
+            border: 3px solid currentColor;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .grid-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .grid-item p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Geometric Accent */
+        .grid-item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background-color: #ffff00;
+            border: 3px solid #000000;
+        }
+
+        .section-blue .grid-item::before {
+            background-color: #ff0000;
+        }
+
+        .section-black .grid-item::before {
+            background-color: #0000ff;
+        }
+
+        /* Schedule Table */
+        .schedule {
+            margin-top: 3rem;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid currentColor;
+        }
+
+        @media (max-width: 767px) {
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+
+        .schedule-time {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #ffff00;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 2rem 4rem;
+            text-decoration: none;
+            border: 5px solid #000000;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: transform 0.2s ease;
+            box-shadow: 10px 10px 0 #000000;
+        }
+
+        .cta-button-main:hover {
+            transform: translate(5px, 5px);
+            box-shadow: 5px 5px 0 #000000;
+        }
+
+        @media (max-width: 767px) {
+            .cta-button-main {
+                font-size: 1.2rem;
+                padding: 1.5rem 3rem;
+            }
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>Bauhaus Centenary Symposium</h2>
+        <a href="#tickets" class="cta-button">Register</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Register Now</a>
+    </div>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="shape circle-red"></div>
+            <div class="shape square-blue"></div>
+            <div class="shape triangle-black"></div>
+            <div class="shape circle-blue"></div>
+
+            <div class="hero-content">
+                <h1>BAUHAUS<br>CENTENARY<br>SYMPOSIUM</h1>
+                <div class="hero-date">SEPTEMBER 18, 2026</div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section-white">
+            <div class="section-content">
+                <h2 class="section-title" id="observe-target">FORM FOLLOWS FUNCTION</h2>
+                <p class="section-text">
+                    Join us for a day-long celebration of the Bauhaus movement's enduring influence on art, architecture, and design. This symposium brings together leading scholars, practitioners, and enthusiasts to explore the legacy of one of the most influential design schools in history.
+                </p>
+                <p class="section-text">
+                    From its founding in 1919 to its forced closure in 1933, the Bauhaus revolutionized how we think about the relationship between art, craft, and industry. Its principles continue to shape contemporary design across all disciplines.
+                </p>
+            </div>
+        </section>
+
+        <!-- Themes Section -->
+        <section class="section-red">
+            <div class="section-content">
+                <h2 class="section-title">KEY THEMES</h2>
+                <div class="grid-3">
+                    <div class="grid-item">
+                        <h3>Architecture</h3>
+                        <p>Exploring Bauhaus principles in contemporary building design and urban planning.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Typography</h3>
+                        <p>The revolution in graphic design and the lasting impact of geometric sans-serif typefaces.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Industrial Design</h3>
+                        <p>How Bauhaus thinking transformed product design and manufacturing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="section-blue">
+            <div class="section-content">
+                <h2 class="section-title">PROGRAM</h2>
+                <div class="schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">9:00 AM</div>
+                        <div class="schedule-title">Registration & Coffee</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00 AM</div>
+                        <div class="schedule-title">Keynote: The Bauhaus Legacy in Contemporary Design</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">11:30 AM</div>
+                        <div class="schedule-title">Panel: Architecture & Space</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">1:00 PM</div>
+                        <div class="schedule-title">Lunch Break</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">2:30 PM</div>
+                        <div class="schedule-title">Workshop: Geometric Abstraction</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">4:00 PM</div>
+                        <div class="schedule-title">Panel: Design Education Today</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">5:30 PM</div>
+                        <div class="schedule-title">Closing Remarks & Reception</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section class="section-black">
+            <div class="section-content">
+                <h2 class="section-title">FEATURED SPEAKERS</h2>
+                <div class="grid-3">
+                    <div class="grid-item">
+                        <h3>Dr. Anna Weber</h3>
+                        <p>Director of Bauhaus Dessau Foundation and leading scholar on modernist design history.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Marcus Chen</h3>
+                        <p>Award-winning architect whose work bridges Bauhaus principles and sustainable design.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Sofia Rodriguez</h3>
+                        <p>Graphic designer and educator specializing in typography and visual systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="section-white">
+            <div class="section-content">
+                <h2 class="section-title">LOCATION & DETAILS</h2>
+                <p class="section-text">
+                    <strong>VENUE:</strong> Modern Art Museum, 500 Design Plaza, Chicago, IL
+                </p>
+                <p class="section-text">
+                    <strong>DATE:</strong> Thursday, September 18, 2026
+                </p>
+                <p class="section-text">
+                    <strong>TIME:</strong> 9:00 AM - 6:30 PM
+                </p>
+                <p class="section-text">
+                    <strong>CAPACITY:</strong> 200 Attendees
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <a href="#tickets" class="cta-button-main">REGISTER</a>
+        </section>
+
+        <div id="tickets"></div>
+
+        <!-- Footer -->
+        <footer>
+            Powered by SimpleTix
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

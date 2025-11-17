@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTALIST - Raw Web Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Brutalist aesthetics - harsh borders, no curves */
+        .brutal-container {
+            max-width: 960px;
+            margin: 0 auto;
+            border: 8px solid #000000;
+            background: #ffffff;
+        }
+
+        .brutal-section {
+            border-bottom: 8px solid #000000;
+            padding: 40px;
+        }
+
+        .brutal-section:last-child {
+            border-bottom: none;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            line-height: 0.9;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: square;
+            margin-left: 20px;
+            font-size: 18px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Brutalist button */
+        .brutal-button {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 40px;
+            border: 8px solid #000000;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .brutal-button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Mobile sticky footer */
+        #mobile-brutal-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000000;
+            border-top: 8px solid #000000;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        #mobile-brutal-cta .brutal-button {
+            width: 100%;
+            text-align: center;
+            background: #ffffff;
+            color: #000000;
+            display: block;
+        }
+
+        #mobile-brutal-cta .brutal-button:hover {
+            background: #cccccc;
+        }
+
+        /* Desktop sticky header */
+        #desktop-brutal-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #000000;
+            border-bottom: 8px solid #000000;
+            padding: 20px;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.2s;
+        }
+
+        #desktop-brutal-cta.show {
+            transform: translateY(0);
+        }
+
+        #desktop-brutal-cta .brutal-button {
+            background: #ffffff;
+            color: #000000;
+            display: block;
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        #desktop-brutal-cta .brutal-button:hover {
+            background: #cccccc;
+        }
+
+        /* Image styling - harsh, no effects */
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 8px solid #000000;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        /* Info blocks */
+        .brutal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            border: 8px solid #000000;
+            margin: 30px 0;
+        }
+
+        .brutal-info-block {
+            border-right: 8px solid #000000;
+            border-bottom: 8px solid #000000;
+            padding: 20px;
+        }
+
+        .brutal-info-block:last-child {
+            border-right: none;
+        }
+
+        .brutal-info-label {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .brutal-info-value {
+            font-size: 18px;
+        }
+
+        /* Host info */
+        .brutal-host {
+            border: 8px solid #000000;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brutal-host-avatar {
+            width: 100px;
+            height: 100px;
+            background: #000000;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Spacing for mobile button */
+        body {
+            padding-bottom: 120px;
+        }
+
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+                padding-top: 20px;
+            }
+
+            #mobile-brutal-cta {
+                display: none;
+            }
+
+            .brutal-container {
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktop-brutal-cta {
+                display: none !important;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .brutal-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-brutal-cta">
+        <a href="#tickets" class="brutal-button">
+            BUY TICKETS
+        </a>
+    </div>
+
+    <!-- Desktop Sticky CTA -->
+    <div id="desktop-brutal-cta">
+        <a href="#tickets" class="brutal-button">
+            BUY TICKETS NOW
+        </a>
+    </div>
+
+    <div class="brutal-container">
+
+        <!-- Hero Image -->
+        <div class="brutal-section" style="padding: 0; border-bottom: none;">
+            <img src="../../images/concept_art.png" alt="EXPERIMENTAL SOUND SERIES">
+        </div>
+
+        <!-- Event Title -->
+        <div class="brutal-section" id="main-trigger">
+            <h1>EXPERIMENTAL<br>SOUND<br>SERIES</h1>
+            <p style="font-size: 24px; text-transform: uppercase; font-weight: 700;">
+                A BRUTALIST APPROACH TO MUSIC
+            </p>
+        </div>
+
+        <!-- Event Info -->
+        <div class="brutal-section">
+            <div class="brutal-info-grid">
+                <div class="brutal-info-block">
+                    <div class="brutal-info-label">DATE</div>
+                    <div class="brutal-info-value">March 15, 2026</div>
+                </div>
+                <div class="brutal-info-block">
+                    <div class="brutal-info-label">TIME</div>
+                    <div class="brutal-info-value">8:00 PM</div>
+                </div>
+                <div class="brutal-info-block">
+                    <div class="brutal-info-label">LOCATION</div>
+                    <div class="brutal-info-value">The Concrete<br>Warehouse</div>
+                </div>
+            </div>
+
+            <a href="#tickets" class="brutal-button" style="margin-top: 30px; display: inline-block;">
+                GET TICKETS
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="brutal-section">
+            <h2>ABOUT</h2>
+            <p>This is not a concert. This is not a performance. This is an experiment in sound, space, and human tolerance.</p>
+            <p>Three acts. No comfort. No compromise. Pure sonic brutalism stripped of all pretense. We reject polish. We reject perfection. We embrace the raw, the harsh, the unfiltered.</p>
+            <p>This event is designed to challenge your expectations of what music can be. If you're looking for entertainment, go elsewhere. If you're seeking an experience that will fundamentally alter your relationship with sound, you're in the right place.</p>
+        </div>
+
+        <!-- Lineup -->
+        <div class="brutal-section">
+            <h2>LINEUP</h2>
+            <ul>
+                <li><strong>CONCRETE MIXER</strong> — Industrial Noise / 8:00 PM</li>
+                <li><strong>VOID FREQUENCY</strong> — Drone Ambient / 9:15 PM</li>
+                <li><strong>RAW STEEL</strong> — Harsh Electronics / 10:45 PM</li>
+            </ul>
+        </div>
+
+        <!-- Rules -->
+        <div class="brutal-section">
+            <h2>RULES</h2>
+            <ul>
+                <li>NO PHONES. NO CAMERAS. NO RECORDING.</li>
+                <li>NO TALKING DURING PERFORMANCES.</li>
+                <li>NO RE-ENTRY.</li>
+                <li>BRING EARPLUGS. WE WILL NOT PROVIDE THEM.</li>
+                <li>STANDING ROOM ONLY. NO SEATING.</li>
+            </ul>
+        </div>
+
+        <!-- Host -->
+        <div class="brutal-section">
+            <h2>ORGANIZED BY</h2>
+            <div class="brutal-host">
+                <div class="brutal-host-avatar">
+                    R
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 5px;">RAW COLLECTIVE</h3>
+                    <p style="margin-bottom: 0;">Uncompromising Experimental Music</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ticket Anchor -->
+        <div id="tickets"></div>
+
+    </div>
+
+    <script>
+        // Desktop sticky header
+        const desktopCta = document.getElementById('desktop-brutal-cta');
+        const mainTrigger = document.getElementById('main-trigger');
+
+        if (desktopCta && mainTrigger) {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        desktopCta.classList.add('show');
+                    } else {
+                        desktopCta.classList.remove('show');
+                    }
+                },
+                { threshold: 0.1 }
+            );
+            observer.observe(mainTrigger);
+        }
+    </script>
+</body>
+</html>

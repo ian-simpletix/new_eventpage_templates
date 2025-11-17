@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON TOKYO - Night Market Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
+            color: #fff;
+            padding-bottom: 100px;
+        }
+        .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+        .font-jp { font-family: 'Noto Sans JP', sans-serif; }
+
+        /* Neon glow effects */
+        .neon-pink {
+            color: #ff006e;
+            text-shadow:
+                0 0 10px #ff006e,
+                0 0 20px #ff006e,
+                0 0 30px #ff006e;
+        }
+        .neon-cyan {
+            color: #00f5ff;
+            text-shadow:
+                0 0 10px #00f5ff,
+                0 0 20px #00f5ff,
+                0 0 30px #00f5ff;
+        }
+        .neon-yellow {
+            color: #ffea00;
+            text-shadow:
+                0 0 10px #ffea00,
+                0 0 20px #ffea00,
+                0 0 30px #ffea00;
+        }
+
+        /* Neon border box */
+        .neon-box {
+            border: 3px solid #ff006e;
+            box-shadow:
+                0 0 20px rgba(255, 0, 110, 0.5),
+                inset 0 0 20px rgba(255, 0, 110, 0.1);
+        }
+
+        /* CTA button */
+        .neon-button {
+            background: linear-gradient(135deg, #ff006e 0%, #ff0080 100%);
+            color: #fff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow:
+                0 0 30px rgba(255, 0, 110, 0.6),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .neon-button:hover {
+            background: linear-gradient(135deg, #00f5ff 0%, #00d4ff 100%);
+            box-shadow:
+                0 0 40px rgba(0, 245, 255, 0.8),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Desktop sticky header */
+        #desktop-sticky-header {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+            background: linear-gradient(180deg, rgba(26,10,26,0.98) 0%, rgba(26,10,26,0.95) 100%);
+            backdrop-filter: blur(10px);
+        }
+        #desktop-sticky-header.visible {
+            transform: translateY(0);
+        }
+
+        /* Vertical text accent */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 8px;
+        }
+
+        /* WYSIWYG Styling */
+        .wysiwyg-content-neon {
+            @apply text-lg text-gray-200 space-y-4;
+            line-height: 1.8;
+        }
+        .wysiwyg-content-neon h2, .wysiwyg-content-neon h3 {
+            @apply font-bebas text-4xl neon-cyan mt-10 mb-4 uppercase tracking-wider;
+        }
+        .wysiwyg-content-neon ul {
+            @apply list-none pl-0 space-y-3;
+        }
+        .wysiwyg-content-neon ul li {
+            @apply pl-6 relative;
+        }
+        .wysiwyg-content-neon ul li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #ff006e;
+            text-shadow: 0 0 10px #ff006e;
+        }
+        .wysiwyg-content-neon img {
+            @apply w-full h-auto my-6 border-4 border-pink-500;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Animated scanlines */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+            animation: scanline 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50" style="background: linear-gradient(to top, rgba(26,10,26,0.98), transparent);">
+        <a href="#tickets" class="neon-button block w-full text-center px-8 py-4">
+            GET TICKETS
+        </a>
+    </div>
+
+    <!-- Desktop Sticky Header CTA -->
+    <div id="desktop-sticky-header" class="hidden md:block fixed top-0 left-0 right-0 z-50 border-b-2 border-pink-500">
+        <div class="container mx-auto max-w-6xl p-4">
+            <a href="#tickets" class="neon-button block w-full text-center px-8 py-3">
+                ⚡ GET TICKETS NOW ⚡
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto max-w-6xl p-4 md:p-12">
+        <div class="relative">
+
+            <!-- Vertical accent text (desktop only) -->
+            <div class="hidden lg:block absolute -left-20 top-0 vertical-text font-jp text-6xl neon-yellow opacity-30">
+                夜市
+            </div>
+
+            <div class="neon-box p-6 md:p-12 scanline-effect">
+
+                <!-- Header -->
+                <section class="mb-8 text-center">
+                    <div class="text-cyan-400 text-sm font-bebas tracking-widest mb-2">
+                        // Electronic Music Festival
+                    </div>
+                    <!-- MAPPING: Event Name -->
+                    <h1 class="font-bebas text-6xl md:text-8xl neon-pink mb-4 leading-none">
+                        TOKYO<br/>NIGHTS<br/>MARKET
+                    </h1>
+                    <div class="text-yellow-400 text-2xl font-bebas tracking-widest">
+                        ⚡ UNDERGROUND ⚡
+                    </div>
+                </section>
+
+                <!-- Main Event Image -->
+                <section class="mb-8">
+                    <div class="relative">
+                        <img src="../../images/rave.png" alt="Event" class="w-full h-auto object-cover border-4 border-cyan-400" style="filter: saturate(1.3) contrast(1.1);">
+                        <div class="absolute top-4 right-4 bg-pink-500 text-white font-bebas text-2xl px-4 py-2 rotate-3" style="box-shadow: 0 0 20px rgba(255, 0, 110, 0.8);">
+                            LIVE
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Event Details -->
+                <section class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-black/50 p-6 border-l-4 border-pink-500">
+                            <div class="neon-cyan font-bebas text-xl mb-2">DATE & TIME</div>
+                            <!-- MAPPING: Event Date & Time -->
+                            <div class="text-white text-lg">November 22, 2026</div>
+                            <div class="text-gray-400">Sat, 22 Nov 2026 // 21:00 - 05:00</div>
+                        </div>
+                        <!-- [PSEUDO-CODE: if (VenueName)] -->
+                        <div class="bg-black/50 p-6 border-l-4 border-yellow-400">
+                            <div class="neon-yellow font-bebas text-xl mb-2">LOCATION</div>
+                            <!-- MAPPING: Venue Name & Address -->
+                            <div class="text-white text-lg">Warehouse District - Building 7</div>
+                            <div class="text-gray-400">1450 Mission St, San Francisco, CA 94103</div>
+                        </div>
+                        <!-- [PSEUDO-CODE: end if] -->
+                    </div>
+                </section>
+
+                <!-- Event Description -->
+                <section class="mb-8 bg-black/30 p-6 md:p-8 border-t-4 border-b-4 border-cyan-400">
+                    <h2 class="font-bebas text-4xl neon-cyan mb-6 uppercase">ABOUT THE EVENT</h2>
+                    <!-- MAPPING: 'Tell Us About Your Event' (Long Description) -->
+                    <div class="wysiwyg-content-neon">
+                        <p>Step into the neon-soaked streets of our underground night market. Experience the raw energy of Tokyo's after-dark culture with live DJs, street food vendors, pop-up art installations, and the city's most vibrant streetwear drops.</p>
+                        <p>This isn't just an event—it's a full sensory overload. From 9PM to sunrise, we're transforming the warehouse district into a cyberpunk paradise.</p>
+                    </div>
+                </section>
+
+                <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+                <section class="mb-8 bg-black/30 p-6 md:p-8">
+                    <div class="wysiwyg-content-neon">
+                        <!-- MAPPING: section.SectionTitle -->
+                        <h3>LINEUP</h3>
+                        <!-- MAPPING: section.SectionContent -->
+                        <ul>
+                            <li>DJ AKIRA - Main Stage (21:00 - 23:00)</li>
+                            <li>NEON QUEEN - Underground Room (23:00 - 01:00)</li>
+                            <li>BASS PROPHET - Sunrise Set (03:00 - 05:00)</li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- [PSEUDO-CODE: end for loop] -->
+
+                <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+                <section class="mb-8 bg-gradient-to-r from-pink-900/20 to-cyan-900/20 p-6 md:p-8 border-l-4 border-pink-500">
+                    <h2 class="font-bebas text-3xl neon-pink mb-4 uppercase">HOSTED BY</h2>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-cyan-500 flex items-center justify-center text-white font-bebas text-4xl" style="box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);">
+                            N
+                        </div>
+                        <div>
+                            <div class="text-white font-bebas text-3xl">NightShift Collective</div>
+                            <div class="text-cyan-400 text-lg">Underground Culture Curators</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- [PSEUDO-CODE: end if] -->
+
+                <!-- Ticket Anchor -->
+                <div id="tickets"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sticky header activation on scroll
+        const stickyHeader = document.getElementById('desktop-sticky-header');
+        const neonBox = document.querySelector('.neon-box');
+
+        if (stickyHeader && neonBox) {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        stickyHeader.classList.add('visible');
+                    } else {
+                        stickyHeader.classList.remove('visible');
+                    }
+                },
+                { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
+            );
+            observer.observe(neonBox);
+        }
+    </script>
+</body>
+</html>

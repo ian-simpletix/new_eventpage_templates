@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL - Command Line Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Code Pro', 'Courier New', monospace;
+            background-color: #000000;
+            color: #00ff00;
+            line-height: 1.6;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+        }
+
+        /* CRT screen effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.05),
+                rgba(0, 255, 0, 0.05) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+            animation: scanlines 8s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Flickering effect */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.97; }
+        }
+
+        .terminal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: flicker 0.15s infinite;
+        }
+
+        /* Terminal window */
+        .terminal-window {
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            box-shadow:
+                0 0 10px rgba(0, 255, 0, 0.3),
+                inset 0 0 100px rgba(0, 255, 0, 0.03);
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Cursor blink */
+        .cursor {
+            animation: blink 1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Typography */
+        .terminal-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 10px;
+        }
+
+        .terminal-subtitle {
+            font-size: 18px;
+            color: #00cc00;
+            margin-bottom: 20px;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+            font-weight: 700;
+        }
+
+        .terminal-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .terminal-section {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .terminal-section:first-child {
+            border-top: none;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* ASCII art borders */
+        .ascii-box {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .ascii-box::before {
+            content: "┌───────────────────────────────┐";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: #000000;
+            padding: 0 10px;
+        }
+
+        /* Button */
+        .terminal-button {
+            display: inline-block;
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 15px 40px;
+            border: 2px solid #00ff00;
+            cursor: pointer;
+            transition: all 0.1s;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .terminal-button:hover {
+            background-color: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+            text-shadow: none;
+        }
+
+        .terminal-button::before {
+            content: "> ";
+        }
+
+        .terminal-button::after {
+            content: " <";
+        }
+
+        /* Image filter */
+        .terminal-image {
+            width: 100%;
+            height: auto;
+            border: 2px solid #00ff00;
+            filter: grayscale(100%) brightness(1.2) contrast(1.5);
+            mix-blend-mode: screen;
+            opacity: 0.7;
+        }
+
+        /* Info grid */
+        .terminal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .terminal-card {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            background-color: rgba(0, 255, 0, 0.05);
+        }
+
+        .terminal-label {
+            font-size: 12px;
+            color: #00cc00;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .terminal-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* List styling */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+        }
+
+        /* Mobile sticky */
+        #mobile-terminal-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            border-top: 2px solid #00ff00;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        #mobile-terminal-cta .terminal-button {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        /* Desktop sticky */
+        #desktop-terminal-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            border-bottom: 2px solid #00ff00;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            transform: translateY(-100%);
+            transition: transform 0.3s;
+        }
+
+        #desktop-terminal-cta.show {
+            transform: translateY(0);
+        }
+
+        #desktop-terminal-cta .terminal-button {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        /* Host card */
+        .terminal-host {
+            border: 2px solid #00ff00;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(0, 255, 0, 0.05);
+        }
+
+        .terminal-host-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+            }
+
+            #mobile-terminal-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktop-terminal-cta {
+                display: none !important;
+            }
+
+            .terminal-title {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-terminal-cta">
+        <a href="#tickets" class="terminal-button">
+            REGISTER
+        </a>
+    </div>
+
+    <!-- Desktop Sticky CTA -->
+    <div id="desktop-terminal-cta">
+        <a href="#tickets" class="terminal-button">
+            EXECUTE REGISTRATION
+        </a>
+    </div>
+
+    <div class="terminal-container">
+        <div class="terminal-window">
+
+            <!-- Terminal Header -->
+            <div class="terminal-text">
+                <span class="terminal-prompt">user@hackathon:~$</span> cat event_details.txt
+            </div>
+
+            <div class="terminal-section" style="border-top: none;">
+                <div class="terminal-text">Loading event information<span class="cursor">█</span></div>
+            </div>
+
+            <!-- Image -->
+            <section class="terminal-section">
+                <img src="../../images/computer_for_a_conference.png" alt="HACKATHON_2026" class="terminal-image">
+                <div class="terminal-text" style="margin-top: 10px; color: #00cc00;">
+                    [IMAGE_LOADED: SUCCESS] :: Resolution: 1920x1080 :: Format: PNG
+                </div>
+            </section>
+
+            <!-- Title -->
+            <section class="terminal-section" id="main-trigger">
+                <h1 class="terminal-title">
+                    HACKATHON_2026<span class="cursor">█</span>
+                </h1>
+                <div class="terminal-subtitle">
+                    [SECURITY_CLEARANCE: PUBLIC] :: [EVENT_TYPE: CODING_COMPETITION]
+                </div>
+            </section>
+
+            <!-- Event Info -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> ./show_event_info.sh
+                </div>
+                <div class="terminal-grid">
+                    <div class="terminal-card">
+                        <div class="terminal-label">// DATE</div>
+                        <div class="terminal-value">2026-05-15</div>
+                        <div class="terminal-label" style="margin-top: 5px;">Saturday</div>
+                    </div>
+                    <div class="terminal-card">
+                        <div class="terminal-label">// TIME</div>
+                        <div class="terminal-value">09:00 - 21:00</div>
+                        <div class="terminal-label" style="margin-top: 5px;">12 hours</div>
+                    </div>
+                    <div class="terminal-card">
+                        <div class="terminal-label">// LOCATION</div>
+                        <div class="terminal-value">Tech Hub SF</div>
+                        <div class="terminal-label" style="margin-top: 5px;">Building 42</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <a href="#tickets" class="terminal-button" style="display: none;">
+                        REGISTER NOW
+                    </a>
+                </div>
+
+                <div class="hidden md:block" style="margin-top: 20px;">
+                    <a href="#tickets" class="terminal-button">
+                        REGISTER
+                    </a>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> cat README.md
+                </div>
+                <h2>// ABOUT_THE_EVENT</h2>
+                <div class="ascii-box">
+                    <div class="terminal-text">
+                        <p>A 12-hour coding marathon where developers, designers, and innovators come together to build the impossible.</p>
+                        <p>Form teams. Write code. Ship products. Win prizes.</p>
+                        <p>Whether you're a seasoned developer or just learning to code, this hackathon offers challenges for all skill levels. Work on projects ranging from web apps to machine learning models, from mobile apps to hardware hacks.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenges -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> ls challenges/
+                </div>
+                <h2>// CHALLENGE_TRACKS</h2>
+                <ul>
+                    <li><strong>TRACK_01</strong> :: Web Development — Build the next generation web app</li>
+                    <li><strong>TRACK_02</strong> :: AI/ML — Create intelligent systems that learn</li>
+                    <li><strong>TRACK_03</strong> :: Mobile — Develop cross-platform mobile solutions</li>
+                    <li><strong>TRACK_04</strong> :: Hardware — Hack the physical world with IoT</li>
+                    <li><strong>TRACK_05</strong> :: Open Innovation — Build anything you imagine</li>
+                </ul>
+            </section>
+
+            <!-- Prizes -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> cat prizes.json
+                </div>
+                <h2>// PRIZE_POOL</h2>
+                <div class="terminal-grid">
+                    <div class="terminal-card">
+                        <div class="terminal-label">// GRAND_PRIZE</div>
+                        <div class="terminal-value">$10,000</div>
+                    </div>
+                    <div class="terminal-card">
+                        <div class="terminal-label">// RUNNER_UP</div>
+                        <div class="terminal-value">$5,000</div>
+                    </div>
+                    <div class="terminal-card">
+                        <div class="terminal-label">// THIRD_PLACE</div>
+                        <div class="terminal-value">$2,500</div>
+                    </div>
+                </div>
+                <div class="terminal-text" style="margin-top: 15px; color: #00cc00;">
+                    [INFO] Additional category prizes available for each track
+                </div>
+            </section>
+
+            <!-- Schedule -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> ./schedule.sh --display
+                </div>
+                <h2>// EVENT_SCHEDULE</h2>
+                <div class="terminal-text">
+                    <p><strong>09:00</strong> :: Registration & Breakfast</p>
+                    <p><strong>10:00</strong> :: Opening Ceremony & Team Formation</p>
+                    <p><strong>11:00</strong> :: Hacking Begins</p>
+                    <p><strong>13:00</strong> :: Lunch Provided</p>
+                    <p><strong>18:00</strong> :: Dinner & Mentor Sessions</p>
+                    <p><strong>21:00</strong> :: Code Freeze & Presentations</p>
+                    <p><strong>23:00</strong> :: Awards Ceremony</p>
+                </div>
+            </section>
+
+            <!-- Host -->
+            <section class="terminal-section">
+                <div class="terminal-text">
+                    <span class="terminal-prompt">user@hackathon:~$</span> whoami
+                </div>
+                <h2>// ORGANIZED_BY</h2>
+                <div class="terminal-host">
+                    <div class="terminal-host-avatar">
+                        D
+                    </div>
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 5px;">DEV COLLECTIVE</h3>
+                        <div class="terminal-text" style="margin-bottom: 0; color: #00cc00;">
+                            Building the future, one hack at a time
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+
+            <!-- Footer -->
+            <div class="terminal-section">
+                <div class="terminal-text" style="color: #00cc00;">
+                    [EOF] End of file reached<span class="cursor">█</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Desktop sticky header
+        const desktopCta = document.getElementById('desktop-terminal-cta');
+        const mainTrigger = document.getElementById('main-trigger');
+
+        if (desktopCta && mainTrigger) {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        desktopCta.classList.add('show');
+                    } else {
+                        desktopCta.classList.remove('show');
+                    }
+                },
+                { threshold: 0.1 }
+            );
+            observer.observe(mainTrigger);
+        }
+    </script>
+</body>
+</html>

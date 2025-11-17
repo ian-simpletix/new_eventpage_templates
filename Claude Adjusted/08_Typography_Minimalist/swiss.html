@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWISS - International Style Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            font-weight: 300;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            padding-bottom: 100px;
+        }
+
+        /* Grid system - 12 column */
+        .swiss-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        /* Typography hierarchy */
+        h1 {
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .large-text {
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        .small-text {
+            font-size: 12px;
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Red accent color */
+        .swiss-red {
+            color: #ff0000;
+        }
+
+        .swiss-red-bg {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        /* Lines and dividers */
+        .swiss-line {
+            width: 100%;
+            height: 1px;
+            background-color: #000000;
+            margin: 40px 0;
+        }
+
+        .swiss-thick-line {
+            width: 100%;
+            height: 4px;
+            background-color: #000000;
+            margin: 60px 0;
+        }
+
+        /* Button */
+        .swiss-button {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 40px;
+            border: none;
+            transition: background-color 0.2s;
+            letter-spacing: 2px;
+        }
+
+        .swiss-button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Image treatment */
+        .swiss-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Info blocks */
+        .swiss-info-block {
+            padding: 30px 0;
+            border-top: 1px solid #000000;
+        }
+
+        .swiss-info-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .swiss-info-value {
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        /* Mobile sticky */
+        #mobile-swiss-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 1px solid #000000;
+            padding: 20px 40px;
+            z-index: 1000;
+        }
+
+        #mobile-swiss-cta .swiss-button {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        /* Desktop sticky */
+        #desktop-swiss-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid #000000;
+            padding: 20px 40px;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s;
+        }
+
+        #desktop-swiss-cta.show {
+            transform: translateY(0);
+        }
+
+        #desktop-swiss-cta .swiss-button {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+                padding-top: 80px;
+            }
+
+            #mobile-swiss-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #desktop-swiss-cta {
+                display: none !important;
+            }
+
+            .swiss-container {
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .large-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-swiss-cta">
+        <a href="#tickets" class="swiss-button">
+            REGISTER NOW
+        </a>
+    </div>
+
+    <!-- Desktop Sticky CTA -->
+    <div id="desktop-swiss-cta">
+        <a href="#tickets" class="swiss-button">
+            REGISTER FOR THE CONFERENCE
+        </a>
+    </div>
+
+    <div class="swiss-container">
+
+        <!-- Header Section -->
+        <section style="padding: 80px 0 60px 0;" id="main-trigger">
+            <div class="small-text swiss-red" style="margin-bottom: 20px;">
+                ANNUAL DESIGN CONFERENCE / 2026
+            </div>
+            <h1>
+                FORMS<br/>
+                FOLLOW<br/>
+                FUNCTION
+            </h1>
+            <p class="large-text" style="max-width: 600px;">
+                An exploration of modernist principles<br/>in contemporary design practice
+            </p>
+        </section>
+
+        <div class="swiss-thick-line"></div>
+
+        <!-- Hero Image -->
+        <section style="margin-bottom: 60px;">
+            <img src="../../images/computer_for_a_conference.png" alt="Conference" class="swiss-image">
+            <p class="small-text" style="margin-top: 10px;">
+                PHOTOGRAPHY: CONFERENCE ARCHIVE 2025
+            </p>
+        </section>
+
+        <div class="swiss-line"></div>
+
+        <!-- Event Info Grid -->
+        <section style="margin-bottom: 60px;">
+            <div class="swiss-grid">
+                <div style="grid-column: span 4;">
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">DATE</div>
+                        <div class="swiss-info-value">
+                            April 12–14<br/>
+                            2026
+                        </div>
+                    </div>
+                </div>
+                <div style="grid-column: span 4;">
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">LOCATION</div>
+                        <div class="swiss-info-value">
+                            Zurich Design<br/>
+                            Center
+                        </div>
+                    </div>
+                </div>
+                <div style="grid-column: span 4;">
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">FORMAT</div>
+                        <div class="swiss-info-value">
+                            3 Days<br/>
+                            In-Person
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="#tickets" class="swiss-button hidden md:inline-block">
+                    REGISTER
+                </a>
+            </div>
+        </section>
+
+        <div class="swiss-thick-line"></div>
+
+        <!-- About Section -->
+        <section style="margin-bottom: 60px;">
+            <div class="swiss-grid">
+                <div style="grid-column: span 5;">
+                    <h2>ABOUT THE<br/>CONFERENCE</h2>
+                </div>
+                <div style="grid-column: span 7;">
+                    <p>
+                        For three days, leading designers, educators, and practitioners gather to examine the enduring relevance of modernist design principles in today's complex visual landscape.
+                    </p>
+                    <p>
+                        Through lectures, workshops, and panel discussions, we explore how clarity, precision, and functional elegance continue to shape contemporary practice across all design disciplines.
+                    </p>
+                    <p>
+                        This conference is essential for anyone committed to design that serves human needs through thoughtful, systematic approaches to visual communication.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="swiss-line"></div>
+
+        <!-- Speakers Section -->
+        <section style="margin-bottom: 60px;">
+            <h2 style="margin-bottom: 40px;">KEYNOTE SPEAKERS</h2>
+
+            <div class="swiss-info-block">
+                <div class="swiss-grid">
+                    <div style="grid-column: span 3;">
+                        <div class="swiss-info-label">01</div>
+                    </div>
+                    <div style="grid-column: span 4;">
+                        <h3>ANNA WEBER</h3>
+                    </div>
+                    <div style="grid-column: span 5;">
+                        <p>
+                            Typographic Systems in Digital Environments<br/>
+                            <span class="small-text">FRIDAY / 10:00 AM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiss-info-block">
+                <div class="swiss-grid">
+                    <div style="grid-column: span 3;">
+                        <div class="swiss-info-label">02</div>
+                    </div>
+                    <div style="grid-column: span 4;">
+                        <h3>MARCUS KLEIN</h3>
+                    </div>
+                    <div style="grid-column: span 5;">
+                        <p>
+                            Grid Theory and Contemporary Practice<br/>
+                            <span class="small-text">SATURDAY / 2:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiss-info-block">
+                <div class="swiss-grid">
+                    <div style="grid-column: span 3;">
+                        <div class="swiss-info-label">03</div>
+                    </div>
+                    <div style="grid-column: span 4;">
+                        <h3>SOFIA BERGMAN</h3>
+                    </div>
+                    <div style="grid-column: span 5;">
+                        <p>
+                            Objectivity and Visual Communication<br/>
+                            <span class="small-text">SUNDAY / 11:00 AM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="swiss-thick-line"></div>
+
+        <!-- Schedule -->
+        <section style="margin-bottom: 60px;">
+            <div class="swiss-grid">
+                <div style="grid-column: span 5;">
+                    <h2>PROGRAM<br/>SCHEDULE</h2>
+                </div>
+                <div style="grid-column: span 7;">
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">FRIDAY APRIL 12</div>
+                        <p>
+                            09:00 — Registration & Coffee<br/>
+                            10:00 — Keynote: Anna Weber<br/>
+                            12:00 — Lunch Break<br/>
+                            14:00 — Workshop Sessions (Track A & B)<br/>
+                            17:00 — Opening Reception
+                        </p>
+                    </div>
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">SATURDAY APRIL 13</div>
+                        <p>
+                            09:00 — Panel: The Grid Today<br/>
+                            11:00 — Coffee Break<br/>
+                            11:30 — Concurrent Sessions<br/>
+                            14:00 — Keynote: Marcus Klein<br/>
+                            16:00 — Portfolio Reviews
+                        </p>
+                    </div>
+                    <div class="swiss-info-block">
+                        <div class="swiss-info-label">SUNDAY APRIL 14</div>
+                        <p>
+                            09:00 — Workshop: Type Systems<br/>
+                            11:00 — Keynote: Sofia Bergman<br/>
+                            13:00 — Closing Discussion<br/>
+                            15:00 — Conference Ends
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="swiss-line"></div>
+
+        <!-- Organizer -->
+        <section style="margin-bottom: 60px;">
+            <div class="swiss-grid">
+                <div style="grid-column: span 5;">
+                    <h2>ORGANIZED<br/>BY</h2>
+                </div>
+                <div style="grid-column: span 7;">
+                    <div style="display: flex; align-items: center; gap: 30px;">
+                        <div style="width: 80px; height: 80px; background-color: #ff0000; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 36px; font-weight: 700;">
+                            Z
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 5px;">ZURICH DESIGN INSTITUTE</h3>
+                            <p style="margin-bottom: 0;">
+                                Advancing systematic design education since 1963
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="swiss-thick-line"></div>
+
+        <!-- Ticket Anchor -->
+        <div id="tickets"></div>
+
+        <!-- Footer -->
+        <section style="padding-bottom: 80px;">
+            <p class="small-text">
+                FORMS FOLLOW FUNCTION CONFERENCE / ZURICH DESIGN INSTITUTE / 2026
+            </p>
+        </section>
+
+    </div>
+
+    <script>
+        // Desktop sticky header
+        const desktopCta = document.getElementById('desktop-swiss-cta');
+        const mainTrigger = document.getElementById('main-trigger');
+
+        if (desktopCta && mainTrigger) {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        desktopCta.classList.add('show');
+                    } else {
+                        desktopCta.classList.remove('show');
+                    }
+                },
+                { threshold: 0.1 }
+            );
+            observer.observe(mainTrigger);
+        }
+    </script>
+
+    <style>
+        @media (max-width: 767px) {
+            .swiss-grid > * {
+                grid-column: span 12 !important;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:inline-block {
+                display: inline-block !important;
+            }
+        }
+    </style>
+</body>
+</html>

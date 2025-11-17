@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stars on Ice Gala | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #d4e8f7 0%, #b3d9f2 50%, #8fc9e8 100%);
+            color: #1a3a52;
+            overflow-x: hidden;
+        }
+
+        /* Sparkle Effect */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 40%; left: 30%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 60%; left: 50%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 80%; left: 20%; animation-delay: 0.3s; }
+        .sparkle:nth-child(6) { top: 50%; left: 80%; animation-delay: 0.8s; }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, rgba(212, 232, 247, 0.98), rgba(143, 201, 232, 0.98));
+            border-bottom: 2px solid #5da3c7;
+            padding: 1rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a3a52;
+            letter-spacing: 0.05em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #5da3c7;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border: 2px solid #5da3c7;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .desktop-sticky-header .cta-button:hover {
+            background-color: #ffffff;
+            color: #5da3c7;
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, rgba(212, 232, 247, 0.98), rgba(143, 201, 232, 0.98));
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 2px solid #5da3c7;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #5da3c7;
+            color: #ffffff;
+            padding: 1.25rem 2rem;
+            text-decoration: none;
+            border: 2px solid #5da3c7;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            padding-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding-bottom: 2rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            background:
+                url('../../images/concept_art.png') center/cover,
+                linear-gradient(135deg, rgba(212, 232, 247, 0.9), rgba(143, 201, 232, 0.9));
+            background-blend-mode: overlay;
+            position: relative;
+        }
+
+        /* Ice crystal decoration */
+        .ice-crystal {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+            animation: rotate-crystal 20s linear infinite;
+        }
+
+        @keyframes rotate-crystal {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .crystal-1 { top: 15%; left: 10%; animation-duration: 15s; }
+        .crystal-2 { top: 25%; right: 12%; animation-duration: 20s; }
+        .crystal-3 { bottom: 20%; left: 15%; animation-duration: 18s; }
+        .crystal-4 { bottom: 30%; right: 18%; animation-duration: 22s; }
+
+        @media (max-width: 767px) {
+            .ice-crystal { font-size: 2rem; }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #1a3a52;
+            margin-bottom: 1rem;
+            z-index: 10;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #1a3a52;
+            font-weight: 300;
+            font-style: italic;
+            z-index: 10;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 767px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+
+        .hero-date {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #5da3c7;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            z-index: 10;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(93, 163, 199, 0.3);
+        }
+
+        @media (max-width: 767px) {
+            .hero-date {
+                font-size: 1.2rem;
+                padding: 0.75rem 2rem;
+            }
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 4rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(26, 58, 82, 0.15);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 767px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .section-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #4a5f75;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 767px) {
+            .section-text {
+                font-size: 1.15rem;
+            }
+        }
+
+        /* Performers Grid */
+        .performers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .performer-card {
+            background: linear-gradient(135deg, #ffffff, #f0f7fb);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(93, 163, 199, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .performer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(93, 163, 199, 0.3);
+        }
+
+        .performer-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #1a3a52;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .performer-title {
+            font-size: 1.1rem;
+            color: #5da3c7;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .performer-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a5f75;
+            font-weight: 300;
+        }
+
+        /* Program Section */
+        .program-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .program-item {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #5da3c7;
+            box-shadow: 0 5px 20px rgba(93, 163, 199, 0.15);
+        }
+
+        .program-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #1a3a52;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .program-performer {
+            font-size: 1.2rem;
+            color: #5da3c7;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a5f75;
+            font-weight: 300;
+        }
+
+        /* Details Section */
+        .details-section {
+            background: linear-gradient(135deg, #5da3c7, #8fc9e8);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(26, 58, 82, 0.25);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .detail-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .detail-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(26, 58, 82, 0.15);
+        }
+
+        .cta-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #1a3a52;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            color: #4a5f75;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @media (max-width: 767px) {
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            .cta-section p {
+                font-size: 1.2rem;
+            }
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background: linear-gradient(135deg, #5da3c7, #8fc9e8);
+            color: #ffffff;
+            padding: 1.75rem 4rem;
+            text-decoration: none;
+            border: 3px solid #5da3c7;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 35px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(93, 163, 199, 0.4);
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(93, 163, 199, 0.5);
+        }
+
+        @media (max-width: 767px) {
+            .cta-button-main {
+                padding: 1.5rem 3rem;
+                font-size: 1.15rem;
+            }
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            color: #4a5f75;
+            font-size: 1.05rem;
+            border-radius: 30px 30px 0 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sparkles -->
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>Stars on Ice Gala</h2>
+        <a href="#tickets" class="cta-button">Reserve Seats</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Reserve Seats</a>
+    </div>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero" id="observe-target">
+            <div class="ice-crystal crystal-1">❄</div>
+            <div class="ice-crystal crystal-2">❄</div>
+            <div class="ice-crystal crystal-3">❄</div>
+            <div class="ice-crystal crystal-4">❄</div>
+
+            <h1>Stars on Ice<br>Gala</h1>
+            <p class="hero-subtitle">An Evening of Elegance and Grace</p>
+            <p class="hero-date">February 14, 2026</p>
+        </section>
+
+        <!-- About -->
+        <section class="info-section">
+            <h2 class="section-title">A Night to Remember</h2>
+            <p class="section-text">
+                Experience the artistry and athleticism of world-class figure skating as internationally
+                acclaimed performers take to the ice for an unforgettable evening of beauty, grace, and emotion.
+            </p>
+            <p class="section-text">
+                This exclusive gala performance brings together Olympic medalists, world champions, and
+                rising stars in an elegant showcase that celebrates the timeless art of figure skating.
+            </p>
+        </section>
+
+        <!-- Performers -->
+        <section class="info-section">
+            <h2 class="section-title">Featured Performers</h2>
+            <div class="performers-grid">
+                <div class="performer-card">
+                    <h3>Elena Volkov</h3>
+                    <p class="performer-title">Olympic Gold Medalist</p>
+                    <p>Two-time Olympic champion renowned for her technical precision and artistic expression. Known for breathtaking spins and elegant choreography.</p>
+                </div>
+                <div class="performer-card">
+                    <h3>Marcus Chen</h3>
+                    <p class="performer-title">World Champion</p>
+                    <p>Three-time world champion celebrated for powerful jumps and innovative programs. A master of combining athleticism with artistry.</p>
+                </div>
+                <div class="performer-card">
+                    <h3>Isabelle Dubois & Thomas Laurent</h3>
+                    <p class="performer-title">Pairs Champions</p>
+                    <p>European champions known for their seamless synchronization and romantic performances. A dynamic duo that captivates audiences worldwide.</p>
+                </div>
+                <div class="performer-card">
+                    <h3>Yuki Tanaka</h3>
+                    <p class="performer-title">Rising Star</p>
+                    <p>Junior world champion and rising sensation. Watch this young talent showcase the future of figure skating with fresh, innovative routines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program -->
+        <section class="program-section">
+            <h2 class="section-title">Evening Program</h2>
+
+            <div class="program-item">
+                <h3 class="program-title">Act I: Classical Elegance</h3>
+                <p class="program-performer">Elena Volkov</p>
+                <p class="program-description">
+                    A stunning interpretation of Tchaikovsky's Swan Lake, featuring breathtaking spirals and elegant footwork that showcases classical skating at its finest.
+                </p>
+            </div>
+
+            <div class="program-item">
+                <h3 class="program-title">Act II: Power and Precision</h3>
+                <p class="program-performer">Marcus Chen</p>
+                <p class="program-description">
+                    An athletic showcase featuring quadruple jumps and dynamic choreography set to contemporary music, demonstrating the perfect marriage of technical skill and artistry.
+                </p>
+            </div>
+
+            <div class="program-item">
+                <h3 class="program-title">Act III: Romance on Ice</h3>
+                <p class="program-performer">Isabelle Dubois & Thomas Laurent</p>
+                <p class="program-description">
+                    A romantic pairs performance featuring intricate lifts, throws, and synchronized elements that tell a story of love and partnership.
+                </p>
+            </div>
+
+            <div class="program-item">
+                <h3 class="program-title">Act IV: The Future of Skating</h3>
+                <p class="program-performer">Yuki Tanaka</p>
+                <p class="program-description">
+                    An innovative program that pushes boundaries with modern choreography and technical elements, showcasing the evolution of figure skating.
+                </p>
+            </div>
+
+            <div class="program-item">
+                <h3 class="program-title">Finale: All-Star Showcase</h3>
+                <p class="program-performer">Full Cast</p>
+                <p class="program-description">
+                    All performers unite for a spectacular closing number that celebrates the artistry and athleticism of figure skating, leaving audiences inspired.
+                </p>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section class="details-section">
+            <h2 class="section-title">Event Information</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>Date & Time</h3>
+                    <p>Saturday, February 14, 2026<br>7:30 PM - 10:00 PM</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Venue</h3>
+                    <p>Grand Ice Arena<br>500 Performance Way<br>Premium Seating Available</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Dress Code</h3>
+                    <p>Elegant Evening Attire<br>Business Formal or Cocktail Dress</p>
+                </div>
+                <div class="detail-card">
+                    <h3>What's Included</h3>
+                    <p>Performance Program<br>Complimentary Champagne Reception<br>Photo Opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Info -->
+        <section class="info-section">
+            <h2 class="section-title">Good to Know</h2>
+            <p class="section-text">
+                Doors open at 6:30 PM with a champagne reception in the Grand Lobby. Please arrive early to enjoy pre-show refreshments and browse the souvenir boutique.
+            </p>
+            <p class="section-text">
+                Premium seating packages include reserved parking, VIP lounge access, and an exclusive meet-and-greet opportunity with the performers after the show.
+            </p>
+            <p class="section-text">
+                Photography and videography are permitted during the finale only. Professional photos will be available for purchase after the performance.
+            </p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Witness Grace on Ice</h2>
+            <p>Reserve your seats for this elegant evening performance</p>
+            <a href="#tickets" class="cta-button-main">Reserve Your Seats</a>
+        </section>
+
+        <div id="tickets"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Stars on Ice Gala 2026</p>
+            <p style="margin-top: 1rem;">Powered by SimpleTix</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

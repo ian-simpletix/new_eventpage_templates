@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Research Symposium | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #003366;
+            color: #ffffff;
+            border-bottom: 3px solid #0066cc;
+            padding: 1rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #0066cc;
+            color: #ffffff;
+            padding: 0.625rem 1.5rem;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .desktop-sticky-header .cta-button:hover {
+            background-color: #0052a3;
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #003366;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 3px solid #0066cc;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #0066cc;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem 6rem;
+            background-color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 3rem 2rem 4rem;
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 5px solid #0066cc;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: url('../../images/global_innovation_conference.png') center/cover;
+            margin-bottom: 3rem;
+            border: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 767px) {
+            .hero-image {
+                height: 250px;
+            }
+        }
+
+        /* Multi-column Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #0066cc;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .info-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #dee2e6;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background-color: #003366;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .schedule-table td:first-child {
+            font-weight: 600;
+            color: #003366;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                position: sticky;
+                top: 100px;
+                align-self: start;
+            }
+        }
+
+        /* Stats Box */
+        .stats-box {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+        }
+
+        /* Key Dates */
+        .key-dates {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .key-dates h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .date-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.9rem;
+        }
+
+        .date-item:last-child {
+            border-bottom: none;
+        }
+
+        .date-item strong {
+            color: #003366;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Tracks Grid */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .track-card {
+            background-color: #ffffff;
+            border: 2px solid #dee2e6;
+            padding: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .track-card:hover {
+            border-color: #0066cc;
+        }
+
+        .track-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 0.75rem;
+        }
+
+        .track-card ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9rem;
+        }
+
+        .track-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .track-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #003366;
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #ffffff;
+            padding: 1.25rem 3rem;
+            text-decoration: none;
+            border: 3px solid #ffffff;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button-main:hover {
+            background-color: #0052a3;
+        }
+
+        @media (max-width: 767px) {
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button-main {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            border-top: 3px solid #dee2e6;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>Annual Research Symposium 2026</h2>
+        <a href="#tickets" class="cta-button">Register Now</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Register Now</a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content" id="observe-target">
+                <h1>Annual Research Symposium 2026</h1>
+                <p class="subtitle">Advancing Knowledge Through Interdisciplinary Collaboration</p>
+                <div class="header-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">November 8, 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Time</span>
+                        <span class="meta-value">8:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Location</span>
+                        <span class="meta-value">University Conference Center</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Format</span>
+                        <span class="meta-value">Hybrid (In-Person & Virtual)</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Image -->
+        <div class="hero-image"></div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Abstract -->
+                <section class="section">
+                    <h2 class="section-title">About the Symposium</h2>
+                    <p class="section-text">
+                        The Annual Research Symposium brings together leading researchers, scholars, and practitioners
+                        from across disciplines to present cutting-edge research findings, foster collaborative
+                        discussions, and advance knowledge in critical areas of scientific inquiry.
+                    </p>
+                    <p class="section-text">
+                        This year's symposium features over 120 presentations across four research tracks, keynote
+                        addresses from distinguished researchers, and networking opportunities designed to facilitate
+                        interdisciplinary collaboration and knowledge exchange.
+                    </p>
+                </section>
+
+                <!-- Research Tracks -->
+                <section class="section">
+                    <h2 class="section-title">Research Tracks</h2>
+                    <div class="tracks-grid">
+                        <div class="track-card">
+                            <h3>Biomedical Sciences</h3>
+                            <ul>
+                                <li>Molecular Biology</li>
+                                <li>Translational Medicine</li>
+                                <li>Public Health</li>
+                                <li>Neuroscience</li>
+                                <li>Genetics & Genomics</li>
+                            </ul>
+                        </div>
+                        <div class="track-card">
+                            <h3>Physical Sciences</h3>
+                            <ul>
+                                <li>Materials Science</li>
+                                <li>Quantum Physics</li>
+                                <li>Environmental Science</li>
+                                <li>Astronomy</li>
+                                <li>Chemistry</li>
+                            </ul>
+                        </div>
+                        <div class="track-card">
+                            <h3>Engineering & Technology</h3>
+                            <ul>
+                                <li>Artificial Intelligence</li>
+                                <li>Robotics</li>
+                                <li>Sustainable Energy</li>
+                                <li>Biotechnology</li>
+                                <li>Computer Science</li>
+                            </ul>
+                        </div>
+                        <div class="track-card">
+                            <h3>Social Sciences</h3>
+                            <ul>
+                                <li>Psychology</li>
+                                <li>Economics</li>
+                                <li>Education Research</li>
+                                <li>Anthropology</li>
+                                <li>Policy Studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Schedule -->
+                <section class="section">
+                    <h2 class="section-title">Program Schedule</h2>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Activity</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8:00 - 9:00</td>
+                                <td>Registration & Continental Breakfast</td>
+                                <td>Main Lobby</td>
+                            </tr>
+                            <tr>
+                                <td>9:00 - 10:00</td>
+                                <td>Opening Keynote: Dr. Sarah Chen</td>
+                                <td>Auditorium A</td>
+                            </tr>
+                            <tr>
+                                <td>10:15 - 12:00</td>
+                                <td>Morning Concurrent Sessions (Track 1-4)</td>
+                                <td>Rooms 101-104</td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 1:00</td>
+                                <td>Lunch & Poster Session</td>
+                                <td>Exhibition Hall</td>
+                            </tr>
+                            <tr>
+                                <td>1:00 - 2:00</td>
+                                <td>Panel Discussion: Interdisciplinary Research</td>
+                                <td>Auditorium A</td>
+                            </tr>
+                            <tr>
+                                <td>2:15 - 4:00</td>
+                                <td>Afternoon Concurrent Sessions (Track 1-4)</td>
+                                <td>Rooms 101-104</td>
+                            </tr>
+                            <tr>
+                                <td>4:15 - 5:00</td>
+                                <td>Closing Keynote: Dr. James Mitchell</td>
+                                <td>Auditorium A</td>
+                            </tr>
+                            <tr>
+                                <td>5:00 - 6:00</td>
+                                <td>Networking Reception</td>
+                                <td>Terrace Lounge</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- What to Expect -->
+                <section class="section">
+                    <h2 class="section-title">What to Expect</h2>
+                    <div class="info-box">
+                        <h3>Presentation Formats</h3>
+                        <ul>
+                            <li>Oral presentations (15 minutes + 5 minute Q&A)</li>
+                            <li>Poster presentations (2-hour sessions)</li>
+                            <li>Panel discussions (60 minutes)</li>
+                            <li>Keynote addresses (45 minutes)</li>
+                        </ul>
+                    </div>
+                    <div class="info-box">
+                        <h3>Included in Registration</h3>
+                        <ul>
+                            <li>Access to all sessions and presentations</li>
+                            <li>Conference materials and abstract book</li>
+                            <li>Continental breakfast, lunch, and refreshments</li>
+                            <li>Networking reception</li>
+                            <li>Certificate of attendance</li>
+                            <li>Virtual access to recorded sessions (30 days)</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Stats -->
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-label">Presentations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Attendees</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Institutions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Research Tracks</div>
+                    </div>
+                </div>
+
+                <!-- Key Dates -->
+                <div class="key-dates">
+                    <h3>Key Dates</h3>
+                    <div class="date-item">
+                        <strong>September 15, 2026</strong>
+                        Abstract Submission Deadline
+                    </div>
+                    <div class="date-item">
+                        <strong>October 1, 2026</strong>
+                        Acceptance Notifications
+                    </div>
+                    <div class="date-item">
+                        <strong>October 15, 2026</strong>
+                        Early Bird Registration Ends
+                    </div>
+                    <div class="date-item">
+                        <strong>November 1, 2026</strong>
+                        Final Registration Deadline
+                    </div>
+                    <div class="date-item">
+                        <strong>November 8, 2026</strong>
+                        Symposium Day
+                    </div>
+                </div>
+
+                <!-- Quick Info -->
+                <div class="info-box">
+                    <h3>Registration Fees</h3>
+                    <ul>
+                        <li>Faculty: $150 (Early) / $200 (Regular)</li>
+                        <li>Students: $75 (Early) / $100 (Regular)</li>
+                        <li>Virtual Only: $50</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Email: symposium@university.edu</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Office: Research Admin, Room 205</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Present Your Research?</h2>
+            <p>Join us for an enriching day of scientific discourse and collaboration</p>
+            <a href="#tickets" class="cta-button-main">Register Now</a>
+        </section>
+
+        <div id="tickets"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Annual Research Symposium 2026</p>
+            <p style="margin-top: 0.5rem;">Powered by SimpleTix</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

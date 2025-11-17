@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vf15 - The "Community" (Playful) Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F0F9FF; 
+            padding-bottom: 100px; 
+        }
+        .font-title-fun { font-family: 'Fredoka', sans-serif; font-weight: 700; }
+        .fun-card {
+            border: 3px solid #0284c7; 
+            border-radius: 24px;
+            background-color: white;
+            box-shadow: 10px 10px 0px #0284c7; 
+        }
+        .fun-button-solid {
+            @apply block w-full text-center text-white font-title-fun text-xl px-8 py-4 rounded-xl shadow-lg transition-all duration-200;
+            background-color: #f59e0b; /* amber-500 */
+            border: 2px solid #b45309; /* amber-700 */
+        }
+        .fun-button-solid:hover { background-color: #fbbf24; }
+        .wysiwyg-content-fun { @apply text-lg text-gray-700 space-y-4; line-height: 1.7; }
+        .wysiwyg-content-fun h2, .wysiwyg-content-fun h3 { @apply font-title-fun text-3xl text-sky-700 mt-8 mb-3; }
+        .wysiwyg-content-fun ul { @apply list-disc list-outside pl-6 space-y-2; }
+        .wysiwyg-content-fun img { @apply w-full h-auto my-6 rounded-xl border-4 border-gray-200; }
+        
+        /* UPDATED: Sticky header for Desktop */
+        .sticky-header-fun {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sticky-header-fun.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-sky-50">
+
+    <!-- UPDATED: Desktop Sticky CTA -->
+    <header id="sticky-header" class="sticky-header-fun hidden md:block sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto max-w-3xl p-4 flex justify-between items-center">
+            <h2 class="text-xl font-title-fun text-sky-700">The Big Bake Sale!</h2>
+            <a href="#tickets" class="font-title-fun text-white text-base px-6 py-2 rounded-lg shadow-md transition-all duration-200 bg-amber-500 hover:bg-amber-600 border-2 border-amber-700">
+                Join the Fun!
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 border-t-2 border-sky-200 z-50">
+        <a href="#tickets" class="block w-full text-center text-white font-title-fun text-xl px-6 py-3 rounded-lg shadow-lg transition-all duration-200 bg-amber-500 hover:bg-amber-600 border-2 border-amber-700">
+            Join the Fun!
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-3xl p-6 md:p-12">
+        <div class="fun-card p-6 md:p-10">
+
+            <section>
+                <img src="../../images/phone_on_a_farm.png" alt="Event" class="w-full h-auto object-cover rounded-xl border-4 border-sky-600">
+            </section>
+            
+            <section class="mt-8 text-center" id="main-cta-trigger">
+                <span class="inline-block bg-amber-100 text-amber-700 text-sm font-bold px-4 py-2 rounded-full">
+                    Community Fundraiser
+                </span>
+                <h1 class="font-title-fun text-6xl md:text-7xl text-sky-600 mt-4 mb-6 leading-tight">
+                    The Big Bake Sale!
+                </h1>
+                <div class="space-y-4 text-gray-700 text-lg border-y-2 border-gray-200 py-6">
+                    <div class="flex flex-col md:flex-row justify-center md:space-x-8">
+                        <div>
+                            <h3 class="font-title-fun text-xl text-gray-900">WHEN:</h3>
+                            <p class="font-semibold">Saturday, Dec 6th<br>10:00 AM - 2:00 PM</p>
+                        </div>
+                        <!-- [PSEUDO-CODE: if (VenueName)] -->
+                        <div class="mt-4 md:mt-0">
+                            <h3 class="font-title-fun text-xl text-gray-900">WHERE:</h3>
+                            <p class="font-semibold">Hillside Elementary</p>
+                        </div>
+                        <!-- [PSEUDO-CODE: end if] -->
+                    </div>
+                </div>
+            </section>
+
+            <a href="#tickets" class="fun-button-solid hidden md:block mt-8">
+                Join the Fun!
+            </a>
+
+            <section class="mt-8">
+                <h2 class="font-title-fun text-3xl text-sky-700 mb-3">What's Happening?</h2>
+                <div class="wysiwyg-content-fun">
+                    <p>Get your sweet tooth ready! We're hosting our 10th annual bake sale to raise money for new playground equipment. Come grab a cookie, a cupcake, or a whole pie!</p>
+                </div>
+            </section>
+
+            <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+            <section class="mt-8 pt-8 border-t-2 border-gray-200">
+                <div class="wysiwyg-content-fun">
+                    <h3>Get Involved!</h3>
+                    <p>Want to donate some baked goods? We'd love your help!</p>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end for loop] -->
+            
+            <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+            <section class="mt-8 pt-8 border-t-2 border-gray-200">
+                <h2 class="font-title-fun text-3xl text-sky-700 mb-3">Hosted By</h2>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/100x100/cffafe/0891b2?text=PTA" alt="Host Avatar" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md">
+                    <div class="ml-4">
+                        <h4 class="text-xl font-title-fun text-gray-900">The Hillside PTA</h4>
+                    </div>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end if] -->
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+        </div>
+    </div>
+    
+    <script>
+        // JS for sticky header
+        document.addEventListener('DOMContentLoaded', () => {
+            const stickyHeader = document.getElementById('sticky-header');
+            const mainCtaTrigger = document.getElementById('main-cta-trigger');
+            if (!stickyHeader || !mainCtaTrigger) return;
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    stickyHeader.classList.toggle('show', !entry.isIntersecting);
+                }, { threshold: 0.1 }
+            );
+            observer.observe(mainCtaTrigger);
+        });
+    </script>
+</body>
+</html>

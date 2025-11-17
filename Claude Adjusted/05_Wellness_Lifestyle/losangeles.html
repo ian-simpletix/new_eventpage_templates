@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VF9 - Los Angeles 'Wellness' Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFDFC; 
+            padding-bottom: 100px; 
+        }
+        .css-slideshow {
+            position: relative; width: 100%; padding-top: 62.5%;
+            overflow: hidden; @apply rounded-lg bg-stone-100;
+        }
+        .css-slideshow > div {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; animation: fade 25s infinite;
+        }
+        .css-slideshow > div:nth-child(1) { animation-delay: 0s; }
+        .css-slideshow > div:nth-child(2) { animation-delay: 5s; }
+        .css-slideshow[data-image-count="1"] > div:nth-child(1) { opacity: 1; animation: none; }
+        @keyframes fade {
+            0% { opacity: 0; } 10% { opacity: 1; } 20% { opacity: 1; } 30% { opacity: 0; } 100% { opacity: 0; }
+        }
+        .wysiwyg-content-la { @apply text-lg text-stone-700 space-y-4; line-height: 1.75; }
+        .wysiwyg-content-la h2, .wysiwyg-content-la h3 { @apply text-3xl font-light text-stone-900 mt-10 mb-4; }
+        .wysiwyg-content-la ul { @apply list-disc list-outside pl-6 space-y-2; }
+    </style>
+</head>
+<body class="bg-stone-50">
+
+    <!-- MOBILE Sticky Footer CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 border-t border-stone-200 z-50">
+        <a href="#tickets" class="block w-full text-center bg-stone-800 text-white font-semibold text-lg px-8 py-3 rounded-full hover:bg-stone-900 transition duration-300">
+            RSVP - $75
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-lg overflow-hidden border border-stone-200">
+            
+            <!-- 
+              DESKTOP Sticky Sidebar CTA
+              The 'md:sticky' class keeps the "RSVP - $75" button visible.
+            -->
+            <aside class="w-full md:w-2/5 md:sticky md:top-12 md:self-start p-8 md:p-10 border-b md:border-b-0 md:border-r border-stone-100">
+                <span class="inline-block bg-stone-100 text-stone-700 text-sm font-medium px-4 py-2 rounded-full">
+                    Wellness & Self-Care
+                </span>
+                <h1 class="text-6xl font-light text-stone-900 leading-tight mt-6">
+                    The Art of Breathwork
+                </h1>
+                <div class="space-y-6 mt-10 text-stone-700 text-lg">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-stone-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-stone-800">Date & Time</h3>
+                            <p>Sunday, December 1st, 2026</p>
+                        </div>
+                    </div>
+                    <!-- [PSEUDO-CODE: if (VenueName)] -->
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-stone-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-stone-800">Location</h3>
+                            <p>Studio 4A, Los Angeles, CA</p>
+                        </div>
+                    </div>
+                    <!-- [PSEUDO-CODE: else] -->
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 text-stone-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553 2.276A1 1 0 0121 13.218V7.781a1 1 0 00-1.447-.894L15 10zM5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <h3 class="font-semibold text-stone-800">Virtual Session</h3>
+                        </div>
+                    </div>
+                    <!-- [PSEUDO-CODE: end if] -->
+                </div>
+                
+                <a href="#tickets" class="hidden md:block w-full text-center bg-stone-800 text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-stone-900 transition duration-300 mt-10">
+                    RSVP - $75
+                </a>
+                
+                <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+                <div class="mt-10 pt-8 border-t border-stone-100">
+                    <h3 class="font-semibold text-stone-800 text-lg mb-4">Hosted by</h3>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/100x100/f5f5f4/333333?text=JR" alt="Host Avatar" class="w-16 h-16 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="text-xl font-bold text-stone-900">Julia Royce</h4>
+                            <p class="text-stone-600">Certified Breathwork Coach</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- [PSEUDO-CODE: end if] -->
+            </aside>
+
+            <!-- Right Pane (Scrollable) -->
+            <main class="w-full md:w-3/5 p-8 md:p-10">
+                <div class="space-y-10">
+                    <section class="css-slideshow" data-image-count="2">
+                        <div style="background-image: url('../../images/yoga.png');"></div>
+                        <div style="background-image: url('../../images/yoga.png');"></div>
+                    </section>
+                    <section>
+                        <h2 class="text-3xl font-light text-stone-900 mb-4">About the Workshop</h2>
+                        <div class="wysiwyg-content-la">
+                            <p>Discover the power of conscious breathing to reduce stress, increase energy, and find clarity. This two-hour workshop will guide you through foundational breathing techniques in a supportive, serene environment.</p>
+                        </div>
+                    </section>
+                    <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+                    <section>
+                        <div class="wysiwyg-content-la">
+                            <h3>Benefits & What to Expect</h3>
+                            <ul>
+                                <li>Release stress and anxiety</li>
+                                <li>Improve focus and mental clarity</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- [PSEUDO-CODE: end for loop] -->
+                    <!-- [PSEUDO-CODE: if (VenueName)] -->
+                    <section>
+                        <h2 class="text-3xl font-light text-stone-900 mb-4">Location</h2>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
+                            <img src="https://placehold.co/800x450/e7e5e4/333333?text=Map+to+Studio+4A" alt="Map" class="w-full h-full object-cover">
+                        </div>
+                    </section>
+                    <!-- [PSEUDO-CODE: end if] -->
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <footer class="text-center py-10 text-stone-500">
+        <p>Powered by <span class="font-bold text-stone-700">SimpleTix</span></p>
+    </footer>
+</body>
+</html>

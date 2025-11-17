@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vf14 - The "Keynote" (Tech) Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #f1f1f1;
+            padding-bottom: 100px; 
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg-hero {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 60%);
+        }
+        .gradient-border-button {
+            border: 1px solid #3b82f6;
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            transition: all 0.3s ease;
+        }
+        .gradient-border-button:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+        .wysiwyg-content-keynote { @apply text-lg text-gray-300 space-y-5; line-height: 1.8; }
+        .wysiwyg-content-keynote h2, .wysiwyg-content-keynote h3 { @apply text-3xl font-bold text-white mt-12 mb-5; }
+        .wysiwyg-content-keynote ul { @apply list-disc list-outside pl-5 space-y-2; }
+        .wysiwyg-content-keynote img { @apply w-full h-auto my-8 rounded-lg; }
+    </style>
+</head>
+<body class="bg-black">
+
+    <!-- UPDATED: Desktop Sticky CTA -->
+    <header class="hidden md:block sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto max-w-5xl p-4 flex justify-between items-center">
+            <div>
+                <!-- MAPPING: Event Name -->
+                <h2 class="text-lg font-bold text-white">Synergy AI: Unveiled</h2>
+            </div>
+            <a href="#tickets" class="gradient-border-button text-white font-semibold px-6 py-2 rounded-full">
+                Register
+            </a>
+        </div>
+    </header>
+    
+    <!-- Mobile Sticky CTA -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-black/70 backdrop-blur-md p-4 border-t border-gray-800 z-50">
+        <a href="#tickets" class="block w-full text-center gradient-border-button text-white font-semibold px-6 py-3 rounded-full">
+            Register Now
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto max-w-4xl p-6">
+        <div class="py-24 md:py-48 text-center gradient-bg-hero">
+            <span class="gradient-text font-semibold tracking-wider">
+                Product Launch
+            </span>
+            <h1 class="text-6xl md:text-8xl font-black text-white mt-6">
+                Synergy AI: Unveiled
+            </h1>
+            <p class="text-2xl md:text-3xl text-gray-400 mt-8">
+                Launching December 1st, 2026
+            </p>
+            <!-- [PSEUDO-CODE: if (VenueName)] -->
+            <p class="text-xl text-gray-500 mt-4">Live from The Innovation Dome</p>
+            <!-- [PSEUDO-CODE: else] -->
+            <p class="text-xl text-gray-500 mt-4">A Global Virtual Broadcast</p>
+            <!-- [PSEUDO-CODE: end if] -->
+        </div>
+
+        <section class="mt-12">
+            <img src="../../images/ai_summit.png" alt="Event Hero" class="w-full h-auto object-cover rounded-lg shadow-2xl shadow-blue-900/20">
+        </section>
+
+        <section class="mt-24">
+            <h2 class="text-3xl font-bold text-white mb-5">About the Event</h2>
+            <div class="wysiwyg-content-keynote">
+                <p>Join us for the unveiling of Synergy AI, a revolutionary platform that will redefine the future of creative collaboration. Witness the next leap forward in generative technology, live from our global keynote event.</p>
+            </div>
+        </section>
+
+        <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+        <section class="mt-16 pt-16 border-t border-gray-800">
+            <div class="wysiwyg-content-keynote">
+                <h3>Keynote Speakers</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <div>
+                        <img src="https://placehold.co/300x300/1e293b/FFFFFF?text=Speaker+1" alt="Speaker" class="w-48 h-48 rounded-full mx-auto object-cover mb-4">
+                        <h4 class="text-xl font-bold text-white">Dr. Aris Thorne</h4>
+                        <p class="text-blue-400">Chief Research Officer</p>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/300x300/1e293b/FFFFFF?text=Speaker+2" alt="Speaker" class="w-48 h-48 rounded-full mx-auto object-cover mb-4">
+                        <h4 class="text-xl font-bold text-white">Mira Chen</h4>
+                        <p class="text-blue-400">Head of Product</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- [PSEUDO-CODE: end for loop] -->
+        
+        <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+        <section class="mt-16 pt-16 border-t border-gray-800">
+            <h2 class="text-3xl font-bold text-white mb-5">Hosted By</h2>
+            <div class="flex items-center bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+                <img src="https://placehold.co/100x100/1e293b/9333ea?text=S" alt="Host Avatar" class="w-20 h-20 rounded-full object-cover">
+                <div class="ml-6">
+                    <h4 class="text-2xl font-bold text-white">Synergy Labs</h4>
+                    <p class="text-gray-400 text-lg">Building What's Next</p>
+                </div>
+            </div>
+        </section>
+        <!-- [PSEUDO-CODE: end if] -->
+
+        <!-- Ticket Anchor -->
+        <div id="tickets"></div>
+    </div>
+</body>
+</html>

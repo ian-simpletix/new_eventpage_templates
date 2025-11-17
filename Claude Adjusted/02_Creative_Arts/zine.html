@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vf17 - The "ZINE" (Analog) Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #e2e8f0;
+            color: #000;
+            padding-bottom: 100px; 
+        }
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+        .sharp { border-radius: 0; }
+        .zine-frame {
+            background-color: #fff;
+            box-shadow: 8px 8px 0px #000;
+            border: 2px solid #000;
+        }
+        .photocopy-image { filter: grayscale(1) contrast(1.7); }
+        .tape-button {
+            @apply sharp w-full text-center px-8 py-4 transition-all duration-100;
+            background-color: #fef08a; 
+            color: #000;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            border: 2px dashed #a16207;
+        }
+        .tape-button:hover { opacity: 0.8; }
+        .mobile-tape-button {
+            background-color: #fef08a;
+            color: #000;
+            font-family: 'Permanent Marker', cursive;
+            border-top: 2px dashed #a16207;
+        }
+        .wysiwyg-content-zine { @apply text-lg text-black space-y-5; line-height: 1.6; }
+        .wysiwyg-content-zine h2, .wysiwyg-content-zine h3 { @apply font-marker text-4xl text-black mt-10 mb-3; }
+        .wysiwyg-content-zine ul { @apply list-none pl-0 space-y-2; }
+        .wysiwyg-content-zine ul li::before { content: "* "; margin-right: 0.5em; }
+        .wysiwyg-content-zine img { @apply w-full h-auto my-6 sharp border-2 border-black photocopy-image; }
+        .wysiwyg-content-zine .highlight { background-color: #fef08a; padding: 2px 4px; }
+
+        /* UPDATED: Sticky header for Desktop */
+        .sticky-header-zine {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sticky-header-zine.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <!-- UPDATED: Desktop Sticky CTA -->
+    <header id="sticky-header" class="sticky-header-zine hidden md:block sticky top-0 z-50 mobile-tape-button p-2">
+        <div class="container mx-auto max-w-3xl flex justify-between items-center">
+            <h2 class="font-marker text-xl text-black">NOISE COMPLAINT</h2>
+            <a href="#tickets" class="font-marker text-black text-base px-6 py-2 rounded-none hover:bg-yellow-400 transition-all">
+                GET TIX - $10
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-50 mobile-tape-button">
+        <a href="#tickets" class="block w-full text-center font-marker text-xl tracking-wide px-6 py-2">
+            GET TIX - $10
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-3xl p-6 md:p-12">
+        <div class="zine-frame p-6 md:p-10 sharp">
+
+            <section class="border-2 border-black sharp">
+                <img src="../../images/zine.png" alt="Event" class="w-full h-auto object-cover sharp photocopy-image">
+            </section>
+            
+            <section class="mt-8 text-left" id="main-cta-trigger">
+                <span class="font-marker text-2xl text-black highlight p-1">
+                    ALL AGES SHOW
+                </span>
+                <h1 class="font-marker text-7xl md:text-8xl font-bold text-black mt-4 mb-6 leading-none">
+                    NOISE COMPLAINT
+                </h1>
+                <div class="space-y-4 text-black text-xl border-y-2 border-black py-6 font-bold">
+                    <div class="flex">
+                        <span class="w-24">WHEN:</span>
+                        <span class="flex-1">FRI DEC 12 // DOORS @ 8PM</span>
+                    </div>
+                    <!-- [PSEUDO-CODE: if (VenueName)] -->
+                    <div class="flex">
+                        <span class="w-24">WHERE:</span>
+                        <span class="flex-1">THE RAT'S NEST // 123 ALLEYWAY</span>
+                    </div>
+                    <!-- [PSEUDO-CODE: end if] -->
+                </div>
+            </section>
+
+            <a href="#tickets" class="hidden md:block tape-button mt-10">
+                GET TIX - $10
+            </a>
+
+            <section class="mt-8">
+                <h2 class="font-marker text-4xl text-black mb-3">THE DEAL:</h2>
+                <div class="wysiwyg-content-zine">
+                    <p>3 BANDS. 10 BUCKS. NO REQUESTS. RESPECT THE SPACE.</p>
+                </div>
+            </section>
+
+            <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+            <section class="mt-8 pt-8 border-t-2 border-black">
+                <div class="wysiwyg-content-zine">
+                    <h3>THE BANDS:</h3>
+                    <ul>
+                        <li>STATIC SHOCK (11PM)</li>
+                        <li>TRASH PANDAS (10PM)</li>
+                    </ul>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end for loop] -->
+            
+            <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+            <section class="mt-8 pt-8 border-t-2 border-black">
+                <h2 class="font-marker text-4xl text-black mb-3">HOSTED BY:</h2>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/100x100/000000/FFFFFF?text=DIY" alt="Host Avatar" class="w-20 h-20 rounded-full object-cover border-2 border-black">
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold text-black">DIY BOOKING</h4>
+                    </div>
+                </div>
+            </section>
+            <!-- [PSEUDO-CODE: end if] -->
+
+            <!-- Ticket Anchor -->
+            <div id="tickets"></div>
+        </div>
+    </div>
+    <script>
+        // JS for sticky header
+        document.addEventListener('DOMContentLoaded', () => {
+            const stickyHeader = document.getElementById('sticky-header');
+            const mainCtaTrigger = document.getElementById('main-cta-trigger');
+            if (!stickyHeader || !mainCtaTrigger) return;
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    stickyHeader.classList.toggle('show', !entry.isIntersecting);
+                }, { threshold: 0.1 }
+            );
+            observer.observe(mainCtaTrigger);
+        });
+    </script>
+</body>
+</html>

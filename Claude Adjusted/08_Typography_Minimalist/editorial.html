@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Talk: Modern Fiction | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.7;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1.25rem 3rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 0.875rem 2rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: background-color 0.3s ease;
+        }
+
+        .desktop-sticky-header .cta-button:hover {
+            background-color: #333333;
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 1.125rem 2.5rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            padding-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 5rem 3rem 4rem;
+            }
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 3rem;
+        }
+
+        .category {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #666666;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            color: #444444;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: #666666;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 767px) {
+            .meta-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Dropcap */
+        .dropcap::first-letter {
+            float: left;
+            font-size: 5.5rem;
+            line-height: 0.85;
+            padding-right: 0.1em;
+            font-weight: 700;
+            margin-top: 0.1em;
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            font-size: 2.25rem;
+            line-height: 1.4;
+            font-weight: 600;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            font-style: italic;
+            letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 767px) {
+            .pull-quote {
+                font-size: 1.75rem;
+                margin: 2rem 0;
+                padding: 1.5rem 0;
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
+        }
+
+        @media (max-width: 767px) {
+            .content-section p {
+                font-size: 1.15rem;
+            }
+        }
+
+        .section-heading {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Author Bio */
+        .author-bio {
+            background-color: #f5f5f5;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .author-bio h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .author-bio p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444444;
+        }
+
+        /* Event Details Box */
+        .event-details {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .event-details h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 767px) {
+            .detail-grid {
+                grid-template-columns: 100px 1fr;
+                font-size: 1rem;
+            }
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #cccccc;
+        }
+
+        .detail-value {
+            color: #ffffff;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 1.25rem 3rem;
+            text-decoration: none;
+            border: 2px solid #1a1a1a;
+            cursor: pointer;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-main:hover {
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: #999999;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>Author Talk: Modern Fiction</h2>
+        <a href="#tickets" class="cta-button">Reserve Seat</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Reserve Seat</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="category">Literary Event</div>
+            <h1>An Evening with Elena Martinez</h1>
+            <p class="subtitle">A conversation about storytelling, identity, and the future of contemporary fiction</p>
+            <div class="meta-info">
+                <span>August 12, 2026</span>
+                <span>7:30 PM</span>
+                <span>Central Library Auditorium</span>
+            </div>
+        </header>
+
+        <article>
+            <section class="content-section">
+                <p class="dropcap">The art of fiction has always been a mirror to society, reflecting our deepest fears, greatest hopes, and most profound questions about what it means to be human. In an age of rapid technological change and cultural transformation, contemporary writers face unique challenges in crafting stories that resonate with modern audiences while honoring the timeless traditions of narrative craft.</p>
+
+                <p>Elena Martinez, author of the critically acclaimed novels "The Distance Between Stars" and "Echoes of Tomorrow," has emerged as one of the most compelling voices in contemporary literature. Her work explores themes of displacement, belonging, and the search for meaning in an increasingly fragmented world.</p>
+            </section>
+
+            <blockquote class="pull-quote" id="observe-target">
+                "Every story we tell is an attempt to make sense of the chaos, to find patterns in the noise, to discover meaning where there might be none."
+            </blockquote>
+
+            <section class="content-section">
+                <h2 class="section-heading">About the Event</h2>
+
+                <p>Join us for an intimate conversation with Elena Martinez as she discusses her latest novel, her creative process, and her perspectives on the evolving landscape of contemporary fiction. This special evening will include a reading from her new work, followed by a moderated discussion and audience Q&A.</p>
+
+                <p>Whether you're an aspiring writer, devoted reader, or simply curious about the craft of storytelling, this event offers a rare opportunity to hear directly from one of literature's most thoughtful practitioners.</p>
+            </section>
+
+            <aside class="author-bio">
+                <h3>About Elena Martinez</h3>
+                <p>Elena Martinez is the author of three novels and a collection of essays. Her work has been translated into 23 languages and has received numerous accolades, including the National Book Award and the PEN/Faulkner Award. She teaches creative writing at Columbia University and lives in Brooklyn with her family.</p>
+            </aside>
+
+            <section class="content-section">
+                <h2 class="section-heading">What to Expect</h2>
+
+                <p>The evening will begin with a 20-minute reading from Elena's latest novel, offering attendees a preview of her new work. This will be followed by a 40-minute conversation with moderator David Chen, literary critic for The New Yorker, exploring themes of craft, inspiration, and the role of literature in contemporary culture.</p>
+
+                <p>The final portion of the event will be dedicated to audience questions, giving attendees the opportunity to engage directly with Elena about her work and writing process. A book signing will follow the formal program.</p>
+            </section>
+
+            <div class="event-details">
+                <h2>Event Information</h2>
+                <div class="detail-grid">
+                    <div class="detail-label">Date:</div>
+                    <div class="detail-value">Tuesday, August 12, 2026</div>
+
+                    <div class="detail-label">Time:</div>
+                    <div class="detail-value">7:30 PM - 9:30 PM</div>
+
+                    <div class="detail-label">Location:</div>
+                    <div class="detail-value">Central Library Auditorium<br>455 Fifth Avenue, New York, NY</div>
+
+                    <div class="detail-label">Capacity:</div>
+                    <div class="detail-value">250 seats</div>
+
+                    <div class="detail-label">Format:</div>
+                    <div class="detail-value">Reading, Discussion, Q&A, Book Signing</div>
+                </div>
+            </div>
+
+            <section class="content-section">
+                <p>Books will be available for purchase at the event, with all proceeds supporting the library's literacy programs. Attendees are encouraged to arrive early, as seating is limited and will be available on a first-come, first-served basis within each ticket tier.</p>
+            </section>
+        </article>
+
+        <div class="cta-section">
+            <a href="#tickets" class="cta-button-main">Reserve Your Seat</a>
+        </div>
+
+        <div id="tickets"></div>
+
+        <footer>
+            <p>Powered by SimpleTix</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

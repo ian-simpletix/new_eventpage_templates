@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Ceremony & Mindfulness Retreat | SimpleTix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background-color: #f5f5dc;
+            color: #4a4a4a;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Sticky Desktop Header CTA */
+        .desktop-sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(245, 245, 220, 0.95);
+            border-bottom: 1px solid #e8dcc7;
+            padding: 1rem 2rem;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .desktop-sticky-header.visible {
+            display: flex;
+        }
+
+        .desktop-sticky-header h2 {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .desktop-sticky-header .cta-button {
+            background-color: #4a4a4a;
+            color: #f5f5dc;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: background-color 0.3s ease;
+        }
+
+        .desktop-sticky-header .cta-button:hover {
+            background-color: #333;
+        }
+
+        /* Mobile Sticky Footer CTA */
+        .mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #4a4a4a;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            border-top: 1px solid #e8dcc7;
+        }
+
+        .mobile-sticky-footer .cta-button {
+            background-color: #f5f5dc;
+            color: #4a4a4a;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-sticky-footer .cta-button:hover {
+            background-color: #e8dcc7;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-sticky-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-sticky-header {
+                display: none !important;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            padding-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding-bottom: 4rem;
+            }
+        }
+
+        /* Vertical Text Accent */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #d4c5b0;
+            letter-spacing: 1rem;
+            font-weight: 200;
+            z-index: 1;
+        }
+
+        @media (max-width: 767px) {
+            .vertical-text {
+                display: none;
+            }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 8rem;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 4rem;
+            color: #4a4a4a;
+            line-height: 2;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            color: #8a8a8a;
+            font-weight: 300;
+            margin-top: 2rem;
+        }
+
+        /* Event Details */
+        .event-details {
+            text-align: center;
+            margin-bottom: 8rem;
+            padding: 0 2rem;
+        }
+
+        .detail-item {
+            margin-bottom: 4rem;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: #8a8a8a;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        /* Divider */
+        .divider {
+            width: 1px;
+            height: 100px;
+            background-color: #e8dcc7;
+            margin: 6rem auto;
+        }
+
+        /* Description */
+        .description {
+            margin-bottom: 8rem;
+            padding: 0 2rem;
+        }
+
+        .description p {
+            font-size: 1rem;
+            line-height: 2.5;
+            text-align: center;
+            color: #6a6a6a;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        /* Program Section */
+        .program {
+            margin-bottom: 8rem;
+            padding: 0 2rem;
+        }
+
+        .program h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #4a4a4a;
+        }
+
+        .program-item {
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e8dcc7;
+        }
+
+        .program-item:last-child {
+            border-bottom: none;
+        }
+
+        .program-time {
+            font-size: 0.85rem;
+            color: #8a8a8a;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .program-title {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-description {
+            font-size: 0.95rem;
+            color: #6a6a6a;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* Tickets Section */
+        #tickets {
+            scroll-margin-top: 100px;
+            margin-bottom: 4rem;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 6rem 0;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #4a4a4a;
+            color: #f5f5dc;
+            padding: 1.25rem 3rem;
+            text-decoration: none;
+            border: 1px solid #4a4a4a;
+            cursor: pointer;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-main:hover {
+            background-color: #f5f5dc;
+            color: #4a4a4a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: #8a8a8a;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            border-top: 1px solid #e8dcc7;
+            margin-top: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="vertical-text">真善美</div>
+
+    <!-- Desktop Sticky Header -->
+    <div class="desktop-sticky-header" id="desktopHeader">
+        <h2>Tea Ceremony & Mindfulness Retreat</h2>
+        <a href="#tickets" class="cta-button">Reserve Your Place</a>
+    </div>
+
+    <!-- Mobile Sticky Footer -->
+    <div class="mobile-sticky-footer">
+        <a href="#tickets" class="cta-button">Reserve Your Place</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>
+                Tea Ceremony<br>
+                &<br>
+                Mindfulness Retreat
+            </h1>
+            <p class="subtitle">A Journey to Inner Peace</p>
+        </header>
+
+        <div class="divider"></div>
+
+        <section class="event-details">
+            <div class="detail-item">
+                <div class="detail-label">Date</div>
+                <div class="detail-value">March 20, 2026</div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Time</div>
+                <div class="detail-value">9:00 AM – 5:00 PM</div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Location</div>
+                <div class="detail-value">Zen Garden Sanctuary<br>Kyoto, Japan</div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Capacity</div>
+                <div class="detail-value">Limited to 20 Guests</div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="description">
+            <p>
+                In the quietude of traditional Japanese gardens, discover the ancient art of tea ceremony
+                and the profound practice of mindfulness meditation.
+            </p>
+
+            <p>
+                This daylong retreat offers a sanctuary from modern life, inviting you to slow down,
+                breathe deeply, and experience the beauty of presence.
+            </p>
+
+            <p>
+                Led by Master Tanaka Hiroshi, a tea ceremony practitioner with over 30 years of experience,
+                and mindfulness teacher Yuki Nakamura, this retreat blends centuries-old traditions
+                with contemporary wellness practices.
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="program">
+            <h2>Program</h2>
+
+            <div class="program-item">
+                <div class="program-time">9:00 – 10:30</div>
+                <div class="program-title">Morning Meditation & Garden Walk</div>
+                <div class="program-description">
+                    Begin your day with guided walking meditation through the Zen garden,
+                    followed by seated meditation in the tea house.
+                </div>
+            </div>
+
+            <div class="program-item">
+                <div class="program-time">10:45 – 12:30</div>
+                <div class="program-title">Introduction to Tea Ceremony</div>
+                <div class="program-description">
+                    Learn the fundamental principles and movements of Chanoyu, the Way of Tea,
+                    including proper etiquette and the philosophy behind each gesture.
+                </div>
+            </div>
+
+            <div class="program-item">
+                <div class="program-time">12:30 – 1:30</div>
+                <div class="program-title">Mindful Vegetarian Lunch</div>
+                <div class="program-description">
+                    Enjoy a traditional Shojin Ryori Buddhist vegetarian meal,
+                    practicing mindful eating in silence.
+                </div>
+            </div>
+
+            <div class="program-item">
+                <div class="program-time">1:45 – 3:30</div>
+                <div class="program-title">Tea Ceremony Practice</div>
+                <div class="program-description">
+                    Participate in your own tea ceremony, preparing and serving matcha
+                    to fellow participants under Master Tanaka's guidance.
+                </div>
+            </div>
+
+            <div class="program-item">
+                <div class="program-time">3:45 – 5:00</div>
+                <div class="program-title">Closing Meditation & Reflection</div>
+                <div class="program-description">
+                    Integrate the day's experiences through guided meditation and group reflection,
+                    taking home practices for daily life.
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section" id="observe-target">
+            <a href="#tickets" class="cta-button-main">Reserve Your Place</a>
+        </div>
+
+        <div id="tickets"></div>
+
+        <footer>
+            <p>Powered by SimpleTix</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for Desktop Sticky Header
+        const observeTarget = document.getElementById('observe-target');
+        const desktopHeader = document.getElementById('desktopHeader');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth >= 768) {
+                    if (!entry.isIntersecting) {
+                        desktopHeader.classList.add('visible');
+                    } else {
+                        desktopHeader.classList.remove('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px'
+        });
+
+        observer.observe(observeTarget);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                desktopHeader.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

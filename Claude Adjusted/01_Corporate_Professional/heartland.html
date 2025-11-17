@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VF6 - Heartland Functional Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e5e7eb; /* gray-200 */
+            padding-bottom: 100px; /* Space for sticky footer */
+        }
+        .font-title-strong {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+        .wysiwyg-content-functional { @apply text-base text-gray-800 space-y-4; line-height: 1.6; }
+        .wysiwyg-content-functional h2, .wysiwyg-content-functional h3 { @apply font-title-strong text-2xl text-gray-900 mt-8 mb-3; }
+        .wysiwyg-content-functional ul { @apply list-disc list-outside pl-6 space-y-2; }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <!-- MOBILE Sticky Footer CTA -->
+    <div id="mobile-sticky-cta" class="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 border-t border-gray-300 z-50">
+        <a href="#tickets" class="block w-full text-center bg-blue-700 text-white font-title-strong text-xl px-8 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition duration-300">
+            REGISTER NOW
+        </a>
+    </div>
+
+    <div class="container mx-auto max-w-6xl my-12 p-4">
+        <div class="flex flex-col-reverse md:flex-row gap-8">
+            
+            <!-- Left (Main) Content Column -->
+            <main class="w-full md:w-3/5 lg:w-2/3">
+                <div class="bg-white p-6 md:p-10 rounded-lg shadow-lg">
+                    <section>
+                        <img src="../../images/carpentry.png" alt="Event" class="w-full h-auto object-cover rounded-lg shadow">
+                    </section>
+
+                    <section class="mt-8">
+                        <div class="wysiwyg-content-functional">
+                            <p class="text-lg">This hands-on, one-day workshop is for anyone looking to learn the fundamentals of modern welding. We'll cover safety, equipment, and basic techniques. No prior experience is necessary.</p>
+                        </div>
+                    </section>
+
+                    <!-- [PSEUDO-CODE: for (section in CustomContentSections)] -->
+                    <section class="mt-8 pt-8 border-t border-gray-300">
+                        <h2 class="font-title-strong text-2xl text-gray-900 mb-4">WHAT YOU'LL LEARN:</h2>
+                        <div class="wysiwyg-content-functional">
+                            <ul>
+                                <li>MIG Welding Basics & Safety</li>
+                                <li>Machine Setup and Calibration</li>
+                                <li>Basic Flat Welds</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- [PSEUDO-CODE: end for loop] -->
+
+                    <!-- Ticket Anchor -->
+                    <div id="tickets"></div>
+                </div>
+            </main>
+
+            <!-- 
+              DESKTOP Sticky Sidebar CTA
+              The 'md:sticky' class makes this entire column sticky on desktop,
+              which keeps the "REGISTER NOW" button visible at all times.
+            -->
+            <aside class="w-full md:w-2/5 lg:w-1/3">
+                <div class="md:sticky md:top-8">
+                    <a href="#tickets" class="hidden md:block w-full text-center bg-blue-700 text-white font-title-strong text-2xl px-8 py-4 rounded-lg shadow-lg hover:bg-blue-800 transition duration-300">
+                        REGISTER NOW - $350
+                    </a>
+                    <div class="bg-white p-6 rounded-lg shadow-lg mt-0 md:mt-8">
+                        <h1 class="font-title-strong text-3xl font-bold text-gray-900 leading-tight">
+                            Intro to Welding Workshop
+                        </h1>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full uppercase mt-4">
+                            Trade Skills
+                        </span>
+                        <div class="space-y-4 mt-6 pt-6 border-t border-gray-300 text-gray-700 text-base">
+                            <div class="flex">
+                                <span class="font-title-strong text-gray-900 w-16 flex-shrink-0">WHEN:</span>
+                                <span class="font-medium">Saturday, Dec 6, 2026<br>9:00 AM - 4:00 PM</span>
+                            </div>
+                            <!-- [PSEUDO-CODE: if (VenueName)] -->
+                            <div class="flex">
+                                <span class="font-title-strong text-gray-900 w-16 flex-shrink-0">WHERE:</span>
+                                <span class="font-medium">Omaha Maker Space<br>1200 N 13th St, Omaha, NE</span>
+                            </div>
+                            <!-- [PSEUDO-CODE: end if] -->
+                            <!-- [PSEUDO-CODE: if (Host.HostName)] -->
+                            <div class="flex">
+                                <span class="font-title-strong text-gray-900 w-16 flex-shrink-0">HOST:</span>
+                                <span class="font-medium">Jim's Fab Shop</span>
+                            </div>
+                            <!-- [PSEUDO-CODE: end if] -->
+                        </div>
+                        <!-- [PSEUDO-CODE: if (VenueName)] -->
+                        <div class="mt-6 pt-6 border-t border-gray-300">
+                            <h4 class="font-title-strong text-gray-900 mb-3">LOCATION:</h4>
+                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow">
+                                <img src="https://placehold.co/400x225/d1d5db/333333?text=Map+to+Maker+Space" alt="Map" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <!-- [PSEUDO-CODE: end if] -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <footer class="text-center py-10 text-gray-600">
+        <p>Powered by <span class="font-bold text-gray-700">SimpleTix</span></p>
+    </footer>
+</body>
+</html>
